@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efrata Juice & Burger | Fresh Taste, Delicious Moments</title>
+    <meta name="description" content="Efrata Juice & Burger — Artisanal gourmet burgers, cold-pressed fresh tropical juices, creamy smoothies, wood-fired pizzas, and crisp salads. Fresh Taste, Delicious Moments.">
+    
+    <!-- Google Fonts: Plus Jakarta Sans, Playfair Display, and Noto Sans Ethiopic for crisp Amharic rendering -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for UI & Culinary Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', '"Noto Sans Ethiopic"', 'sans-serif'],
+                        serif: ['"Playfair Display"', '"Noto Sans Ethiopic"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            orange: '#F97316',
+                            amber: '#F59E0B',
+                            emerald: '#15803D',
+                            forest: '#0F291E',
+                            cream: '#FFFBF5',
+                            charcoal: '#1C1917',
+                            warmgray: '#F5F0E6'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(28, 25, 23, 0.08)',
+                        'glow': '0 10px 25px -5px rgba(249, 115, 22, 0.35)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Editorial & Smooth Interaction Styling */
+        body {
+            background-color: #FFFBF5;
+            color: #1C1917;
+            overflow-x: hidden;
+        }
+
+        /* Subtle Grain Texture Overlay for Premium Editorial Feel */
+        .bg-editorial-pattern {
+            background-image: radial-gradient(#F97316 0.6px, transparent 0.6px);
+            background-size: 24px 24px;
+        }
+
+        /* Hide scrollbars on horizontal category pills while maintaining scroll */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Smooth Page View Transitions */
+        .page-view {
+            animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Card Image Zoom Effect */
+        .menu-card-img {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .menu-card:hover .menu-card-img {
+            transform: scale(1.07);
+        }
+
+        /* Active Nav Indicator */
+        .nav-link.active {
+            color: #F97316;
+            font-weight: 700;
+        }
+        .nav-link.active::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2.5px;
+            background: #F97316;
+            border-radius: 99px;
+            margin-top: 2px;
+        }
+
+        /* Glassmorphism Header */
+        .glass-nav {
+            background: rgba(255, 251, 245, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(28, 25, 23, 0.06);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-orange-500 selection:text-white flex flex-col min-h-screen">
+
+    <!-- =====================================================================
+         TOP ANNOUNCEMENT BAR
+    ====================================================================== -->
+    <div class="bg-brand-forest text-amber-50 text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wide">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-6 gap-y-1">
+            <span class="flex items-center gap-1.5">
+                <i class="fa-solid fa-leaf text-emerald-400"></i>
+                <span data-i18n="topBannerFresh">100% Farm-Fresh Cold-Pressed Juices & Handcrafted Burgers</span>
+            </span>
+            <span class="hidden md:inline text-emerald-700">|</span>
+            <span class="flex items-center gap-1.5">
+                <i class="fa-solid fa-clock text-amber-400"></i>
+                <span data-i18n="topBannerHours">Open Daily: 7:30 AM – 10:30 PM</span>
+            </span>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         STICKY HEADER & NAVIGATION (Supports Multi-Page SPA Routing + Lang Switcher)
+    ====================================================================== -->
+    <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Brand Logo Profile -->
+                <button onclick="navigateTo('home')" class="flex items-center gap-3.5 text-left group focus:outline-none">
+                    <div class="relative w-12 h-12 rounded-full bg-gradient-to-br from-brand-forest via-emerald-700 to-orange-600 p-0.5 shadow-md group-hover:scale-105 transition-transform">
+                        <div class="w-full h-full rounded-full bg-brand-forest flex items-center justify-center relative overflow-hidden">
+                            <svg viewBox="0 0 64 64" class="w-9 h-9" aria-hidden="true">
+                                <circle cx="32" cy="32" r="28" fill="none" stroke="#F59E0B" stroke-width="2" stroke-dasharray="4 3" />
+                                <path d="M18 33 C18 23, 46 23, 46 33 Z" fill="#F97316" />
+                                <path d="M17 36 Q24.5 39, 32 36 T47 36" fill="none" stroke="#4ADE80" stroke-width="2.6" stroke-linecap="round" />
+                                <rect x="18" y="39" width="28" height="4.5" rx="2.2" fill="#FBBF24" />
+                                <path d="M18 46 C18 50, 46 50, 46 46 Z" fill="#EA580C" />
+                                <circle cx="48" cy="17" r="6.5" fill="#22C55E" />
+                                <path d="M48 13.5 C46 15.5, 46 18.5, 48 20.5 C50 18.5, 50 15.5, 48 13.5 Z" fill="#FEF08A" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="font-serif font-extrabold text-xl sm:text-2xl tracking-tight text-stone-900 block leading-none">
+                            EFRATA
+                        </span>
+                        <span class="text-[11px] font-bold uppercase tracking-[0.18em] text-orange-600 block mt-1">
+                            Juice & Burger
+                        </span>
+                    </div>
+                </button>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-8" aria-label="Main Navigation">
+                    <button onclick="navigateTo('home')" data-nav="home" class="nav-link active text-stone-700 hover:text-orange-600 font-medium text-[15px] transition-colors py-1" data-i18n="navHome">Home</button>
+                    <button onclick="navigateTo('menu')" data-nav="menu" class="nav-link text-stone-700 hover:text-orange-600 font-medium text-[15px] transition-colors py-1" data-i18n="navMenu">Menu</button>
+                    <button onclick="navigateTo('gallery')" data-nav="gallery" class="nav-link text-stone-700 hover:text-orange-600 font-medium text-[15px] transition-colors py-1" data-i18n="navGallery">Gallery</button>
+                    <button onclick="navigateTo('about')" data-nav="about" class="nav-link text-stone-700 hover:text-orange-600 font-medium text-[15px] transition-colors py-1" data-i18n="navAbout">About Us</button>
+                    <button onclick="navigateTo('contact')" data-nav="contact" class="nav-link text-stone-700 hover:text-orange-600 font-medium text-[15px] transition-colors py-1" data-i18n="navContact">Contact</button>
+                </nav>
+
+                <!-- Right Controls: Language Selector, Order Bag & Mobile Menu Button -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    
+                    <!-- Three-Language Selector -->
+                    <div class="relative" id="langDropdownContainer">
+                        <button onclick="toggleLangMenu()" aria-label="Select Language" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-stone-100 hover:bg-orange-50 border border-stone-200/80 text-stone-800 text-xs sm:text-sm font-semibold transition-colors">
+                            <i class="fa-solid fa-globe text-orange-600"></i>
+                            <span id="currentLangLabel">EN</span>
+                            <i class="fa-solid fa-chevron-down text-[10px] text-stone-500"></i>
+                        </button>
+                        
+                        <div id="langDropdown" class="hidden absolute right-0 mt-2 w-44 bg-white rounded-2xl shadow-xl border border-stone-100 py-1.5 z-50 overflow-hidden">
+                            <button onclick="setLanguage('en')" class="lang-option w-full px-4 py-2.5 text-left text-sm flex items-center justify-between hover:bg-orange-50 transition-colors font-medium text-stone-800" data-lang="en">
+                                <span>English</span>
+                                <span class="text-xs font-bold text-stone-400">EN</span>
+                            </button>
+                            <button onclick="setLanguage('am')" class="lang-option w-full px-4 py-2.5 text-left text-sm flex items-center justify-between hover:bg-orange-50 transition-colors font-medium text-stone-800" data-lang="am">
+                                <span>አማርኛ</span>
+                                <span class="text-xs font-bold text-stone-400">AM</span>
+                            </button>
+                            <button onclick="setLanguage('om')" class="lang-option w-full px-4 py-2.5 text-left text-sm flex items-center justify-between hover:bg-orange-50 transition-colors font-medium text-stone-800" data-lang="om">
+                                <span>Afaan Oromo</span>
+                                <span class="text-xs font-bold text-stone-400">OM</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Order / Cart Drawer Trigger -->
+                    <button onclick="toggleOrderDrawer()" class="relative flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs sm:text-sm shadow-glow transition-all active:scale-95">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="hidden sm:inline" data-i18n="btnOrderNow">Order Now</span>
+                        <span id="cartBadge" class="hidden ml-0.5 bg-white text-orange-600 text-[11px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                    </button>
+
+                    <!-- Mobile Hamburger Menu Button -->
+                    <button onclick="toggleMobileMenu()" aria-label="Open Navigation Menu" class="lg:hidden p-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 transition-colors">
+                        <i id="mobileMenuIcon" class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Slide-Down Navigation Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-stone-100 px-4 pt-3 pb-6 shadow-xl">
+            <div class="flex flex-col space-y-1">
+                <button onclick="navigateTo('home'); toggleMobileMenu()" data-nav="home" class="mobile-nav-link text-left px-4 py-3 rounded-xl font-semibold text-stone-800 hover:bg-orange-50 hover:text-orange-600 transition-colors" data-i18n="navHome">Home</button>
+                <button onclick="navigateTo('menu'); toggleMobileMenu()" data-nav="menu" class="mobile-nav-link text-left px-4 py-3 rounded-xl font-semibold text-stone-800 hover:bg-orange-50 hover:text-orange-600 transition-colors" data-i18n="navMenu">Menu</button>
+                <button onclick="navigateTo('gallery'); toggleMobileMenu()" data-nav="gallery" class="mobile-nav-link text-left px-4 py-3 rounded-xl font-semibold text-stone-800 hover:bg-orange-50 hover:text-orange-600 transition-colors" data-i18n="navGallery">Gallery</button>
+                <button onclick="navigateTo('about'); toggleMobileMenu()" data-nav="about" class="mobile-nav-link text-left px-4 py-3 rounded-xl font-semibold text-stone-800 hover:bg-orange-50 hover:text-orange-600 transition-colors" data-i18n="navAbout">About Us</button>
+                <button onclick="navigateTo('contact'); toggleMobileMenu()" data-nav="contact" class="mobile-nav-link text-left px-4 py-3 rounded-xl font-semibold text-stone-800 hover:bg-orange-50 hover:text-orange-600 transition-colors" data-i18n="navContact">Contact</button>
+            </div>
+            
+            <div class="mt-4 pt-4 border-t border-stone-100 flex items-center justify-between px-4">
+                <span class="text-xs font-semibold uppercase tracking-wider text-stone-400" data-i18n="selectLangLabel">Language</span>
+                <div class="flex gap-2">
+                    <button onclick="setLanguage('en')" class="px-3 py-1.5 rounded-lg text-xs font-bold border border-stone-200 hover:border-orange-500">EN</button>
+                    <button onclick="setLanguage('am')" class="px-3 py-1.5 rounded-lg text-xs font-bold border border-stone-200 hover:border-orange-500">አማርኛ</button>
+                    <button onclick="setLanguage('om')" class="px-3 py-1.5 rounded-lg text-xs font-bold border border-stone-200 hover:border-orange-500">Oromo</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- =====================================================================
+         MAIN CONTENT CONTAINER (5 Complete Pages: Home, Menu, Gallery, About, Contact)
+    ====================================================================== -->
+    <main class="flex-grow">
+
+        <!-- =================================================================
+             PAGE 1: HOME PAGE (index.html)
+        ================================================================== -->
+        <section id="page-home" class="page-view">
+            
+            <!-- Hero Section -->
+            <div class="relative overflow-hidden pt-8 pb-16 lg:pt-14 lg:pb-24">
+                <div class="absolute inset-0 bg-editorial-pattern opacity-20 pointer-events-none"></div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                        
+                        <!-- Hero Left Typography -->
+                        <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+                            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100/80 border border-orange-200 text-orange-700 text-xs sm:text-sm font-bold tracking-wide">
+                                <span class="w-2 h-2 rounded-full bg-orange-500 animate-ping"></span>
+                                <span data-i18n="heroBadge">EFRATA JUICE & BURGER</span>
+                            </div>
+                            
+                            <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-stone-900 leading-[1.12] tracking-tight" data-i18n="heroHeadline">
+                                Fresh Taste, Delicious Moments.
+                            </h1>
+                            
+                            <p class="text-base sm:text-lg text-stone-600 leading-relaxed max-w-xl mx-auto lg:mx-0" data-i18n="heroSubtitle">
+                                Savor flame-grilled gourmet burgers, cold-pressed tropical juices, velvet smoothies, and oven-baked classics crafted daily from farm-fresh ingredients.
+                            </p>
+                            
+                            <!-- Primary CTAs -->
+                            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                                <button onclick="openTelegramQuickOrder()" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-[#0088cc] hover:bg-[#0077b5] text-white font-bold text-base shadow-glow flex items-center justify-center gap-2.5 transition-all hover:-translate-y-0.5">
+                                    <i class="fa-brands fa-telegram text-xl"></i>
+                                    <span data-i18n="btnOrderNow">Order Now</span>
+                                </button>
+                                <button onclick="navigateTo('menu')" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white hover:bg-stone-50 text-stone-900 border-2 border-stone-200 hover:border-orange-500 font-bold text-base flex items-center justify-center gap-2.5 transition-all">
+                                    <span data-i18n="btnExploreMenu">Explore Our Menu</span>
+                                    <i class="fa-solid fa-arrow-right text-orange-600"></i>
+                                </button>
+                            </div>
+
+                            <!-- Trust & Freshness Metrics -->
+                            <div class="grid grid-cols-3 gap-4 pt-6 border-t border-stone-200/80 max-w-lg mx-auto lg:mx-0">
+                                <div>
+                                    <p class="font-serif text-2xl sm:text-3xl font-extrabold text-stone-900">100%</p>
+                                    <p class="text-xs sm:text-sm text-stone-500 font-medium" data-i18n="statNatural">Natural Fruit</p>
+                                </div>
+                                <div>
+                                    <p class="font-serif text-2xl sm:text-3xl font-extrabold text-orange-600">25+</p>
+                                    <p class="text-xs sm:text-sm text-stone-500 font-medium" data-i18n="statMenuItems">Signature Dishes</p>
+                                </div>
+                                <div>
+                                    <p class="font-serif text-2xl sm:text-3xl font-extrabold text-emerald-700">4.9★</p>
+                                    <p class="text-xs sm:text-sm text-stone-500 font-medium" data-i18n="statGuests">Happy Guests</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hero Right Visual Collage -->
+                        <div class="lg:col-span-6 relative">
+                            <div class="relative rounded-[2.25rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3]">
+                                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=85" 
+                                     onerror="this.src='https://placehold.co/1200x900/F97316/FFFFFF?text=Efrata+Signature+Burger'"
+                                     alt="Efrata Signature Gourmet Burger & Fresh Juice" 
+                                     class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                                
+                                <!-- Floating Fresh Juice Badge Card -->
+                                <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto bg-white/95 backdrop-blur-md p-3.5 sm:p-4 rounded-2xl shadow-xl flex items-center gap-3.5 max-w-xs">
+                                    <img src="https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=300&q=80" 
+                                         onerror="this.src='https://placehold.co/150x150/F59E0B/FFFFFF?text=Juice'"
+                                         alt="Fresh Cold-Pressed Juice" 
+                                         class="w-14 h-14 rounded-xl object-cover flex-shrink-0">
+                                    <div>
+                                        <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-700 block" data-i18n="heroCardTag">Freshly Pressed</span>
+                                        <p class="font-bold text-stone-900 text-sm" data-i18n="heroCardTitle">Efrata Special Layered Juice</p>
+                                        <p class="text-xs text-stone-500" data-i18n="heroCardSub">Avocado, Mango, Papaya & Honey</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Quick-Jump Strip -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+                    <button onclick="openMenuCategory('burgers')" class="group bg-white hover:bg-orange-600 p-4 rounded-2xl shadow-soft border border-stone-100 text-center transition-all">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-orange-100 group-hover:bg-white/20 text-orange-600 group-hover:text-white flex items-center justify-center text-xl mb-2.5 transition-colors">
+                            <i class="fa-solid fa-burger"></i>
+                        </div>
+                        <span class="font-bold text-sm text-stone-800 group-hover:text-white block" data-i18n="catBurgers">Burgers</span>
+                    </button>
+                    <button onclick="openMenuCategory('juices')" class="group bg-white hover:bg-amber-500 p-4 rounded-2xl shadow-soft border border-stone-100 text-center transition-all">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-amber-100 group-hover:bg-white/20 text-amber-600 group-hover:text-white flex items-center justify-center text-xl mb-2.5 transition-colors">
+                            <i class="fa-solid fa-glass-citrus"></i>
+                        </div>
+                        <span class="font-bold text-sm text-stone-800 group-hover:text-white block" data-i18n="catJuices">Fresh Juices</span>
+                    </button>
+                    <button onclick="openMenuCategory('smoothies')" class="group bg-white hover:bg-pink-600 p-4 rounded-2xl shadow-soft border border-stone-100 text-center transition-all">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-pink-100 group-hover:bg-white/20 text-pink-600 group-hover:text-white flex items-center justify-center text-xl mb-2.5 transition-colors">
+                            <i class="fa-solid fa-blender"></i>
+                        </div>
+                        <span class="font-bold text-sm text-stone-800 group-hover:text-white block" data-i18n="catSmoothies">Smoothies & Shakes</span>
+                    </button>
+                    <button onclick="openMenuCategory('salads')" class="group bg-white hover:bg-emerald-600 p-4 rounded-2xl shadow-soft border border-stone-100 text-center transition-all">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 group-hover:bg-white/20 text-emerald-700 group-hover:text-white flex items-center justify-center text-xl mb-2.5 transition-colors">
+                            <i class="fa-solid fa-bowl-food"></i>
+                        </div>
+                        <span class="font-bold text-sm text-stone-800 group-hover:text-white block" data-i18n="catSalads">Salads</span>
+                    </button>
+                    <button onclick="openMenuCategory('pizza')" class="group bg-white hover:bg-red-600 p-4 rounded-2xl shadow-soft border border-stone-100 text-center transition-all">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-red-100 group-hover:bg-white/20 text-red-600 group-hover:text-white flex items-center justify-center text-xl mb-2.5 transition-colors">
+                            <i class="fa-solid fa-pizza-slice"></i>
+                        </div>
+                        <span class="font-bold text-sm text-stone-800 group-hover:text-white block" data-i18n="catPizza">Pizza</span>
+                    </button>
+                    <button onclick="openMenuCategory('lasagna')" class="group bg-white hover:bg-stone-800 p-4 rounded-2xl shadow-soft border border-stone-100 text-center transition-all">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-stone-100 group-hover:bg-white/20 text-stone-700 group-hover:text-white flex items-center justify-center text-xl mb-2.5 transition-colors">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <span class="font-bold text-sm text-stone-800 group-hover:text-white block" data-i18n="catLasagna">Lasagna & More</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Featured Food & Drinks Section -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-orange-600 block mb-2" data-i18n="featuredEyebrow">CHEF'S SIGNATURES</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-stone-900" data-i18n="featuredTitle">Featured Food & Fresh Drinks</h2>
+                    </div>
+                    <button onclick="navigateTo('menu')" class="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 font-bold text-sm sm:text-base">
+                        <span data-i18n="viewFullMenu">View Full Menu</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Dynamic Featured Grid Populated via JS -->
+                <div id="featuredMenuGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+            </div>
+
+            <!-- Promotional Banner Section -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div class="relative rounded-[2.25rem] overflow-hidden bg-brand-forest text-white shadow-2xl">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+                        <div class="lg:col-span-7 p-8 sm:p-12 lg:p-14 space-y-5">
+                            <span class="inline-block px-3.5 py-1 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/30 text-xs font-bold uppercase tracking-wider" data-i18n="promoBadge">
+                                DAILY COMBO SPECIAL
+                            </span>
+                            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight" data-i18n="promoTitle">
+                                Efrata Burger & Fresh Juice Pairing
+                            </h2>
+                            <p class="text-emerald-100/90 text-base sm:text-lg max-w-xl leading-relaxed" data-i18n="promoDesc">
+                                Pair any handcrafted Efrata Special Burger with a chilled glass of freshly squeezed seasonal fruit juice for the ultimate midday boost or family dinner.
+                            </p>
+                            <div class="pt-2 flex flex-wrap gap-4">
+                                <button onclick="navigateTo('menu')" class="px-7 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-extrabold text-sm sm:text-base transition-colors">
+                                    <span data-i18n="promoBtn">Browse Combos & Menu</span>
+                                </button>
+                                <button onclick="openTelegramQuickOrder()" class="px-7 py-3.5 rounded-xl bg-[#0088cc]/90 hover:bg-[#0088cc] text-white font-bold text-sm sm:text-base border border-white/20 transition-colors flex items-center gap-2">
+                                    <i class="fa-brands fa-telegram text-sky-200 text-lg"></i>
+                                    <span data-i18n="promoTelegram">Order via Telegram</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5 h-72 sm:h-96 lg:h-full">
+                            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=85" 
+                                 onerror="this.src='https://placehold.co/900x700/15803D/FFFFFF?text=Burger+and+Juice+Combo'"
+                                 alt="Burger and Juice Combo" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Testimonials -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-emerald-700 block mb-2" data-i18n="testimonialsEyebrow">GUEST LOVE</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-stone-900" data-i18n="testimonialsTitle">What Our Guests Say</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Review 1 -->
+                    <div class="bg-white p-7 rounded-3xl shadow-soft border border-stone-100 flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-amber-400 text-sm mb-4">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-stone-700 leading-relaxed italic mb-6" data-i18n="review1Text">
+                                "The Efrata Special Burger is juicy, flavorful, and perfectly grilled, and their layered avocado-mango juice is the freshest in town!"
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
+                            <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-700 font-bold flex items-center justify-center">BM</div>
+                            <div>
+                                <p class="font-bold text-stone-900 text-sm">Bereket Mekonnen</p>
+                                <p class="text-xs text-stone-500" data-i18n="reviewGuestLabel">Regular Guest</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="bg-white p-7 rounded-3xl shadow-soft border border-stone-100 flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-amber-400 text-sm mb-4">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-stone-700 leading-relaxed italic mb-6" data-i18n="review2Text">
+                                "Clean atmosphere, welcoming staff, and generous portions. Their Special Salad and wood-fired pizza are our family's weekend favorite."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center">ST</div>
+                            <div>
+                                <p class="font-bold text-stone-900 text-sm">Selamawit Tadesse</p>
+                                <p class="text-xs text-stone-500" data-i18n="reviewGuestLabel">Regular Guest</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="bg-white p-7 rounded-3xl shadow-soft border border-stone-100 flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-amber-400 text-sm mb-4">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-stone-700 leading-relaxed italic mb-6" data-i18n="review3Text">
+                                "You can immediately taste that every juice is squeezed fresh to order without artificial syrups. Best smoothie and burger spot!"
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
+                            <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-700 font-bold flex items-center justify-center">DG</div>
+                            <div>
+                                <p class="font-bold text-stone-900 text-sm">Dawit Gemechu</p>
+                                <p class="text-xs text-stone-500" data-i18n="reviewGuestLabel">Regular Guest</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             PAGE 2: DIGITAL MENU PAGE (menu.html)
+        ================================================================== -->
+        <section id="page-menu" class="page-view hidden py-10 sm:py-14">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Menu Header -->
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-orange-600 block mb-2" data-i18n="menuEyebrow">CRAFTED FRESH TO ORDER</span>
+                    <h1 class="font-serif text-3xl sm:text-5xl font-extrabold text-stone-900 mb-4" data-i18n="menuTitle">Our Full Digital Menu</h1>
+                    <p class="text-stone-600 text-base sm:text-lg" data-i18n="menuSubtitle">
+                        Explore our crisp salads, 100% pure fruit juices, thick smoothies, flame-grilled burgers, pizzas, and baked lasagna.
+                    </p>
+                </div>
+
+                <!-- Search & Category Filter Controls -->
+                <div class="bg-white p-4 sm:p-5 rounded-3xl shadow-soft border border-stone-100 mb-8 space-y-4">
+                    <!-- Search Bar -->
+                    <div class="relative max-w-md mx-auto">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-stone-400"></i>
+                        <input type="text" id="menuSearchInput" oninput="renderMenu()" placeholder="Search dishes, juices, ingredients..." data-i18n-placeholder="searchPlaceholder" class="w-full pl-11 pr-4 py-3 rounded-2xl bg-stone-50 border border-stone-200 focus:border-orange-500 focus:bg-white focus:outline-none text-sm font-medium transition-colors">
+                    </div>
+
+                    <!-- Category Filter Pills -->
+                    <div id="menuCategoryTabs" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 justify-start md:justify-center">
+                        <button onclick="setMenuCategory('all')" data-cat="all" class="cat-pill active px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap bg-orange-600 text-white shadow-sm transition-all" data-i18n="catAll">All Items</button>
+                        <button onclick="setMenuCategory('salads')" data-cat="salads" class="cat-pill px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap bg-stone-100 text-stone-700 hover:bg-orange-50 transition-all" data-i18n="catSalads">Salads</button>
+                        <button onclick="setMenuCategory('juices')" data-cat="juices" class="cat-pill px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap bg-stone-100 text-stone-700 hover:bg-orange-50 transition-all" data-i18n="catJuices">Fresh Juices</button>
+                        <button onclick="setMenuCategory('smoothies')" data-cat="smoothies" class="cat-pill px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap bg-stone-100 text-stone-700 hover:bg-orange-50 transition-all" data-i18n="catSmoothies">Smoothies & Shakes</button>
+                        <button onclick="setMenuCategory('burgers')" data-cat="burgers" class="cat-pill px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap bg-stone-100 text-stone-700 hover:bg-orange-50 transition-all" data-i18n="catBurgers">Burgers</button>
+                        <button onclick="setMenuCategory('pizza')" data-cat="pizza" class="cat-pill px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap bg-stone-100 text-stone-700 hover:bg-orange-50 transition-all" data-i18n="catPizza">Pizza</button>
+                        <button onclick="setMenuCategory('lasagna')" data-cat="lasagna" class="cat-pill px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap bg-stone-100 text-stone-700 hover:bg-orange-50 transition-all" data-i18n="catLasagna">Lasagna</button>
+                        <button onclick="setMenuCategory('others')" data-cat="others" class="cat-pill px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap bg-stone-100 text-stone-700 hover:bg-orange-50 transition-all" data-i18n="catOthers">Other Specialties</button>
+                    </div>
+                </div>
+
+                <!-- Menu Items Grid -->
+                <div id="menuContainer" class="space-y-12"></div>
+
+                <!-- Empty Search State -->
+                <div id="menuEmptyState" class="hidden text-center py-16 bg-white rounded-3xl border border-stone-100">
+                    <i class="fa-solid fa-utensils text-4xl text-stone-300 mb-3"></i>
+                    <p class="font-bold text-stone-700 text-lg" data-i18n="noResultsTitle">No matching dishes found</p>
+                    <p class="text-stone-500 text-sm mt-1" data-i18n="noResultsSub">Try selecting another category or clearing your search.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             PAGE 3: GALLERY PAGE (gallery.html)
+        ================================================================== -->
+        <section id="page-gallery" class="page-view hidden py-10 sm:py-14">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-orange-600 block mb-2" data-i18n="galleryEyebrow">VISUAL FEAST</span>
+                    <h1 class="font-serif text-3xl sm:text-5xl font-extrabold text-stone-900 mb-4" data-i18n="galleryTitle">Efrata Culinary Gallery</h1>
+                    <p class="text-stone-600 text-base sm:text-lg" data-i18n="gallerySubtitle">
+                        A closer look at our vibrant cold-pressed juices, flame-grilled burgers, crisp salads, stone-baked pizzas, and warm dining ambiance.
+                    </p>
+                </div>
+
+                <!-- Gallery Category Filters -->
+                <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-4 mb-8 justify-start md:justify-center">
+                    <button onclick="filterGallery('all')" data-gcat="all" class="gal-pill active px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap bg-orange-600 text-white transition-all" data-i18n="galAll">All Photos</button>
+                    <button onclick="filterGallery('burgers')" data-gcat="burgers" class="gal-pill px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap bg-white border border-stone-200 text-stone-700 hover:border-orange-500 transition-all" data-i18n="catBurgers">Burgers</button>
+                    <button onclick="filterGallery('juices')" data-gcat="juices" class="gal-pill px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap bg-white border border-stone-200 text-stone-700 hover:border-orange-500 transition-all" data-i18n="catJuices">Fresh Juices</button>
+                    <button onclick="filterGallery('smoothies')" data-gcat="smoothies" class="gal-pill px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap bg-white border border-stone-200 text-stone-700 hover:border-orange-500 transition-all" data-i18n="catSmoothies">Smoothies</button>
+                    <button onclick="filterGallery('salads')" data-gcat="salads" class="gal-pill px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap bg-white border border-stone-200 text-stone-700 hover:border-orange-500 transition-all" data-i18n="catSalads">Salads</button>
+                    <button onclick="filterGallery('pizza')" data-gcat="pizza" class="gal-pill px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap bg-white border border-stone-200 text-stone-700 hover:border-orange-500 transition-all" data-i18n="catPizza">Pizza</button>
+                    <button onclick="filterGallery('atmosphere')" data-gcat="atmosphere" class="gal-pill px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap bg-white border border-stone-200 text-stone-700 hover:border-orange-500 transition-all" data-i18n="galAtmosphere">Atmosphere</button>
+                </div>
+
+                <!-- Gallery Masonry / Uniform Proportion Grid -->
+                <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             PAGE 4: ABOUT US PAGE (about.html)
+        ================================================================== -->
+        <section id="page-about" class="page-view hidden py-10 sm:py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+                
+                <!-- Story Hero -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    <div class="lg:col-span-6 space-y-6">
+                        <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-emerald-700 block" data-i18n="aboutEyebrow">OUR STORY & CRAFT</span>
+                        <h1 class="font-serif text-3xl sm:text-5xl font-extrabold text-stone-900 leading-tight" data-i18n="aboutTitle">
+                            Where Fresh Harvest Meets Culinary Passion.
+                        </h1>
+                        <p class="text-stone-600 text-base sm:text-lg leading-relaxed" data-i18n="aboutLead">
+                            Founded with a simple promise—to serve wholesome, vibrant, and deeply satisfying food—Efrata Juice & Burger has become a beloved gathering place for families, friends, and food lovers.
+                        </p>
+                        <p class="text-stone-600 text-base leading-relaxed" data-i18n="aboutBody">
+                            Every morning begins with hand-selecting sun-ripened avocados, mangoes, papayas, strawberries, and crisp garden greens alongside premium cuts of beef and chicken. Nothing is pre-bottled or rushed; every burger is seared to order and every juice is pressed fresh when you ask for it.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-6">
+                        <div class="rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3]">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=85" 
+                                 onerror="this.src='https://placehold.co/1000x750/0F291E/FFFFFF?text=Efrata+Dining+Experience'"
+                                 alt="Efrata Juice & Burger Restaurant Interior" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 Core Pillars -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-7 rounded-3xl shadow-soft border border-stone-100 space-y-3">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-seedling"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-stone-900" data-i18n="pillar1Title">Farm-Fresh Ingredients</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed" data-i18n="pillar1Desc">
+                            We partner with local growers for peak-season fruits, crisp lettuce, ripe tomatoes, and aromatic herbs delivered daily.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-7 rounded-3xl shadow-soft border border-stone-100 space-y-3">
+                        <div class="w-12 h-12 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-fire-burner"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-stone-900" data-i18n="pillar2Title">Uncompromising Quality</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed" data-i18n="pillar2Desc">
+                            100% pure fruit juices with zero artificial flavors, paired with freshly seasoned patties and house-made sauces.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-7 rounded-3xl shadow-soft border border-stone-100 space-y-3">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-stone-900" data-i18n="pillar3Title">Guest Satisfaction</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed" data-i18n="pillar3Desc">
+                            Warm Ethiopian hospitality is at the heart of every table we serve, ensuring fast, attentive, and friendly care.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-7 rounded-3xl shadow-soft border border-stone-100 space-y-3">
+                        <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-stone-900" data-i18n="pillar4Title">Our Mission & Values</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed" data-i18n="pillar4Desc">
+                            To nourish our community with honest, vibrant, and memorable meals that bring people together every single day.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             PAGE 5: CONTACT PAGE (contact.html)
+        ================================================================== -->
+        <section id="page-contact" class="page-view hidden py-10 sm:py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-orange-600 block mb-2" data-i18n="contactEyebrow">VISIT OR ORDER DIRECTLY</span>
+                    <h1 class="font-serif text-3xl sm:text-5xl font-extrabold text-stone-900 mb-3" data-i18n="contactTitle">Contact Efrata Juice & Burger</h1>
+                    <p class="text-stone-600 text-base sm:text-lg" data-i18n="contactSubtitle">
+                        We look forward to welcoming you at Biyaaf Market Center, First Floor, Bale Robe for dine-in, takeaway, or fast Telegram ordering.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Contact Details & Editable Location/Hours Card -->
+                    <div class="lg:col-span-5 bg-white p-7 sm:p-9 rounded-3xl shadow-soft border border-stone-100 space-y-7">
+                        
+                        <!-- Phone Number -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center text-lg flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-stone-900 text-base" data-i18n="contactPhoneLabel">Phone / Telegram & Direct Orders</h3>
+                                <a href="tel:+251967442641" id="businessPhoneDisplay" class="text-orange-600 font-extrabold text-lg hover:underline block mt-0.5">+251 96 744 2641</a>
+                                <a href="https://t.me/+251967442641" id="contactTelegramSubLink" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-sky-600 hover:text-sky-700 mt-1">
+                                    <i class="fa-brands fa-telegram text-sm"></i>
+                                    <span>Telegram: +251 96 744 2641</span>
+                                </a>
+                                <p class="text-xs text-stone-500 mt-1" data-i18n="contactPhoneSub">Available during opening hours for takeout & table reservations</p>
+                            </div>
+                        </div>
+
+                        <!-- Address (Clean & Easily Configurable) -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-bold text-stone-900 text-base" data-i18n="contactLocationLabel">Restaurant Location</h3>
+                                    <button onclick="toggleEditDetails()" class="text-xs font-semibold text-stone-400 hover:text-orange-600 underline" data-i18n="editBtn">Update Info</button>
+                                </div>
+                                <p id="displayAddress" class="text-stone-700 font-medium text-sm mt-1">Biyaaf Market Center, First Floor, Bale Robe</p>
+                            </div>
+                        </div>
+
+                        <!-- Opening Hours -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-lg flex-shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-stone-900 text-base" data-i18n="contactHoursLabel">Opening Hours</h3>
+                                <p id="displayHours" class="text-stone-700 font-medium text-sm mt-1">Monday – Sunday: 7:30 AM – 10:30 PM</p>
+                            </div>
+                        </div>
+
+                        <!-- Inline Editable Settings Drawer (Hidden by default, allows instant updating of address/hours/map) -->
+                        <div id="editDetailsForm" class="hidden bg-stone-50 p-4 rounded-2xl border border-stone-200 space-y-3">
+                            <p class="text-xs font-bold uppercase tracking-wider text-stone-500" data-i18n="customizeStoreTitle">Customize Store Details</p>
+                            <div>
+                                <label class="text-xs font-semibold text-stone-600 block mb-1" data-i18n="contactPhoneLabel">Phone / Telegram Number</label>
+                                <input type="text" id="inputPhone" value="+251 96 744 2641" class="w-full px-3 py-2 rounded-xl border border-stone-200 text-sm">
+                            </div>
+                            <div>
+                                <label class="text-xs font-semibold text-stone-600 block mb-1" data-i18n="contactLocationLabel">Address</label>
+                                <input type="text" id="inputAddress" value="Biyaaf Market Center, First Floor, Bale Robe" class="w-full px-3 py-2 rounded-xl border border-stone-200 text-sm">
+                            </div>
+                            <div>
+                                <label class="text-xs font-semibold text-stone-600 block mb-1" data-i18n="contactHoursLabel">Opening Hours</label>
+                                <input type="text" id="inputHours" value="Monday – Sunday: 7:30 AM – 10:30 PM" class="w-full px-3 py-2 rounded-xl border border-stone-200 text-sm">
+                            </div>
+                            <button onclick="saveStoreDetails()" class="w-full py-2.5 rounded-xl bg-stone-900 text-white font-bold text-xs hover:bg-orange-600 transition-colors" data-i18n="saveBtn">Save & Update Map</button>
+                        </div>
+
+                        <!-- Telegram Direct Contact Button -->
+                        <div class="pt-2">
+                            <a href="https://t.me/+251967442641" id="contactTelegramLink" target="_blank" rel="noopener noreferrer" class="w-full py-4 px-6 rounded-2xl bg-[#0088cc] hover:bg-[#0077b5] text-white font-extrabold text-base shadow-lg flex items-center justify-center gap-3 transition-all hover:-translate-y-0.5">
+                                <i class="fa-brands fa-telegram text-2xl"></i>
+                                <span data-i18n="btnTelegramChat">Message on Telegram (+251 96 744 2641)</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Google Maps Embed Integration -->
+                    <div class="lg:col-span-7 bg-white p-3 rounded-3xl shadow-soft border border-stone-100 h-[430px] sm:h-[480px] overflow-hidden">
+                        <iframe 
+                            id="googleMapFrame"
+                            title="Efrata Juice & Burger Location Map"
+                            class="w-full h-full rounded-2xl border-0"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://maps.google.com/maps?q=Biyaaf%20Market%20Center%2C%20Bale%20Robe%2C%20Ethiopia&t=&z=15&ie=UTF8&iwloc=&output=embed">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =====================================================================
+         FLOATING TELEGRAM BUTTON
+    ====================================================================== -->
+    <button onclick="openTelegramQuickOrder()" aria-label="Order via Telegram" class="fixed bottom-5 right-5 z-30 w-14 h-14 rounded-full bg-[#0088cc] hover:bg-[#0077b5] text-white shadow-2xl flex items-center justify-center text-2xl transition-transform hover:scale-110">
+        <i class="fa-brands fa-telegram"></i>
+    </button>
+
+    <!-- =====================================================================
+         FOOTER WITH BRAND LOGO PROFILE
+    ====================================================================== -->
+    <footer class="bg-brand-forest text-amber-50/90 mt-16 border-t border-emerald-900/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-emerald-900/60">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-12 h-12 rounded-full bg-white/10 border border-amber-400/40 flex items-center justify-center shadow-md flex-shrink-0">
+                            <svg viewBox="0 0 64 64" class="w-9 h-9" aria-hidden="true">
+                                <circle cx="32" cy="32" r="28" fill="none" stroke="#F59E0B" stroke-width="2" stroke-dasharray="4 3" />
+                                <path d="M18 33 C18 23, 46 23, 46 33 Z" fill="#F97316" />
+                                <path d="M17 36 Q24.5 39, 32 36 T47 36" fill="none" stroke="#4ADE80" stroke-width="2.6" stroke-linecap="round" />
+                                <rect x="18" y="39" width="28" height="4.5" rx="2.2" fill="#FBBF24" />
+                                <path d="M18 46 C18 50, 46 50, 46 46 Z" fill="#EA580C" />
+                                <circle cx="48" cy="17" r="6.5" fill="#22C55E" />
+                                <path d="M48 13.5 C46 15.5, 46 18.5, 48 20.5 C50 18.5, 50 15.5, 48 13.5 Z" fill="#FEF08A" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="font-serif font-extrabold text-xl text-white block leading-none">EFRATA</span>
+                            <span class="text-[11px] font-bold uppercase tracking-[0.18em] text-amber-400 block mt-1">Juice & Burger</span>
+                        </div>
+                    </div>
+                    <p class="text-xs sm:text-sm text-emerald-100/80 leading-relaxed" data-i18n="footerTagline">
+                        Fresh Taste, Delicious Moments. Serving handcrafted burgers, 100% natural fresh juices, smoothies, salads, and wood-fired favorites.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4" data-i18n="footerLinksTitle">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-emerald-100/80">
+                        <li><button onclick="navigateTo('home')" class="hover:text-amber-300 transition-colors" data-i18n="navHome">Home</button></li>
+                        <li><button onclick="navigateTo('menu')" class="hover:text-amber-300 transition-colors" data-i18n="navMenu">Menu</button></li>
+                        <li><button onclick="navigateTo('gallery')" class="hover:text-amber-300 transition-colors" data-i18n="navGallery">Gallery</button></li>
+                        <li><button onclick="navigateTo('about')" class="hover:text-amber-300 transition-colors" data-i18n="navAbout">About Us</button></li>
+                        <li><button onclick="navigateTo('contact')" class="hover:text-amber-300 transition-colors" data-i18n="navContact">Contact</button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4" data-i18n="footerMenuTitle">Menu Categories</h4>
+                    <ul class="space-y-2 text-sm text-emerald-100/80">
+                        <li><button onclick="openMenuCategory('salads')" class="hover:text-amber-300 transition-colors" data-i18n="catSalads">Salads</button></li>
+                        <li><button onclick="openMenuCategory('juices')" class="hover:text-amber-300 transition-colors" data-i18n="catJuices">Fresh Juices</button></li>
+                        <li><button onclick="openMenuCategory('smoothies')" class="hover:text-amber-300 transition-colors" data-i18n="catSmoothies">Smoothies & Shakes</button></li>
+                        <li><button onclick="openMenuCategory('pizza')" class="hover:text-amber-300 transition-colors" data-i18n="catPizza">Pizza</button></li>
+                        <li><button onclick="openMenuCategory('lasagna')" class="hover:text-amber-300 transition-colors" data-i18n="catLasagna">Lasagna</button></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-2.5 text-sm text-emerald-100/80">
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4" data-i18n="footerContactTitle">Get In Touch</h4>
+                    <p id="footerAddressText" class="flex items-start gap-2">
+                        <i class="fa-solid fa-location-dot text-amber-400 mt-1"></i>
+                        <span>Biyaaf Market Center, First Floor, Bale Robe</span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-amber-400"></i>
+                        <span id="footerPhoneText">+251 96 744 2641</span>
+                    </p>
+                    <p id="footerHoursText" class="flex items-center gap-2">
+                        <i class="fa-solid fa-clock text-amber-400"></i>
+                        <span>Monday – Sunday: 7:30 AM – 10:30 PM</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-emerald-200/75">
+                <p>&copy; 2026 Efrata Juice & Burger. <span data-i18n="footerRights">All rights reserved.</span></p>
+                <p data-i18n="footerMadeWith">Crafted with fresh ingredients & hospitality.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =====================================================================
+         INTERACTIVE ORDER DRAWER (Telegram Checkout Integration)
+    ====================================================================== -->
+    <div id="orderDrawerBackdrop" onclick="toggleOrderDrawer()" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 hidden transition-opacity"></div>
+    <aside id="orderDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-6 border-b border-stone-100 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <i class="fa-solid fa-bag-shopping text-orange-600 text-xl"></i>
+                <h3 class="font-serif font-extrabold text-xl text-stone-900" data-i18n="drawerTitle">Your Order</h3>
+            </div>
+            <button onclick="toggleOrderDrawer()" class="w-9 h-9 rounded-xl bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-stone-700">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div id="orderItemsList" class="flex-grow overflow-y-auto p-6 space-y-4"></div>
+
+        <div class="p-6 border-t border-stone-100 bg-stone-50 space-y-4">
+            <div class="flex items-center justify-between text-base font-extrabold text-stone-900">
+                <span data-i18n="drawerTotal">Estimated Total</span>
+                <span id="orderTotalAmount" class="text-orange-600 text-xl">0 ETB</span>
+            </div>
+            <button onclick="checkoutViaTelegram()" class="w-full py-4 px-6 rounded-2xl bg-[#0088cc] hover:bg-[#0077b5] text-white font-extrabold text-base shadow-lg flex items-center justify-center gap-2.5 transition-all">
+                <i class="fa-brands fa-telegram text-xl"></i>
+                <span data-i18n="drawerCheckoutBtn">Send Order via Telegram</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- =====================================================================
+         GALLERY LIGHTBOX MODAL
+    ====================================================================== -->
+    <div id="lightboxModal" onclick="closeLightbox(event)" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 sm:p-8">
+        <button onclick="closeLightbox(event, true)" aria-label="Close Lightbox" class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center text-xl transition-colors">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        
+        <button onclick="stepLightbox(-1, event)" aria-label="Previous Image" class="absolute left-3 sm:left-6 w-11 h-11 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center text-lg transition-colors">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <div class="max-w-4xl w-full text-center space-y-4" onclick="event.stopPropagation()">
+            <img id="lightboxImg" src="" alt="" class="max-h-[75vh] mx-auto rounded-2xl shadow-2xl object-contain">
+            <div>
+                <span id="lightboxCat" class="text-xs font-bold uppercase tracking-widest text-amber-400"></span>
+                <h3 id="lightboxCaption" class="font-serif text-xl sm:text-2xl font-bold text-white mt-1"></h3>
+            </div>
+        </div>
+
+        <button onclick="stepLightbox(1, event)" aria-label="Next Image" class="absolute right-3 sm:right-6 w-11 h-11 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center text-lg transition-colors">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- =====================================================================
+         TOAST NOTIFICATION (Replaces browser alerts cleanly)
+    ====================================================================== -->
+    <div id="toastNotification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-stone-900 text-white px-5 py-3 rounded-2xl shadow-2xl text-sm font-semibold flex items-center gap-2.5 opacity-0 pointer-events-none transition-all duration-300">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toastMessage">Added to order</span>
+    </div>
+
+    <!-- =====================================================================
+         APPLICATION JAVASCRIPT (Modular Architecture: translations.js + menu.js + main.js)
+    ====================================================================== -->
+    <script>
+        /**
+         * 1. STORE CONFIGURATION (Verified Bale Robe location & Phone / Telegram)
+         */
+        const STORE_CONFIG = {
+            name: "Efrata Juice & Burger",
+            phoneDisplay: "+251 96 744 2641",
+            telegramPhone: "251967442641",
+            address: "Biyaaf Market Center, First Floor, Bale Robe",
+            hours: "Monday – Sunday: 7:30 AM – 10:30 PM",
+            currency: "ETB"
+        };
+
+        /**
+         * 2. TRILINGUAL DICTIONARY (translations.js: English, Amharic አማርኛ, Afaan Oromo)
+         */
+        const TRANSLATIONS = {
+            en: {
+                topBannerFresh: "100% Farm-Fresh Cold-Pressed Juices & Handcrafted Burgers",
+                topBannerHours: "Open Daily: 7:30 AM – 10:30 PM",
+                navHome: "Home",
+                navMenu: "Menu",
+                navGallery: "Gallery",
+                navAbout: "About Us",
+                navContact: "Contact",
+                selectLangLabel: "Language",
+                btnOrderNow: "Order Now",
+                btnExploreMenu: "Explore Our Menu",
+                heroBadge: "EFRATA JUICE & BURGER",
+                heroHeadline: "Fresh Taste, Delicious Moments.",
+                heroSubtitle: "Savor flame-grilled gourmet burgers, cold-pressed tropical juices, velvet smoothies, and oven-baked classics crafted daily from farm-fresh ingredients.",
+                statNatural: "Natural Fruit",
+                statMenuItems: "Signature Dishes",
+                statGuests: "Happy Guests",
+                heroCardTag: "Freshly Pressed",
+                heroCardTitle: "Efrata Special Layered Juice",
+                heroCardSub: "Avocado, Mango, Papaya & Honey",
+                catAll: "All Items",
+                catSalads: "Salads",
+                catJuices: "Fresh Juices",
+                catSmoothies: "Smoothies & Shakes",
+                catBurgers: "Burgers",
+                catPizza: "Pizza",
+                catLasagna: "Lasagna",
+                catOthers: "Other Specialties",
+                featuredEyebrow: "CHEF'S SIGNATURES",
+                featuredTitle: "Featured Food & Fresh Drinks",
+                viewFullMenu: "View Full Menu",
+                promoBadge: "DAILY COMBO SPECIAL",
+                promoTitle: "Efrata Burger & Fresh Juice Pairing",
+                promoDesc: "Pair any handcrafted Efrata Special dish or wood-fired pizza with a chilled glass of freshly squeezed seasonal fruit juice for the ultimate midday boost or family dinner.",
+                promoBtn: "Browse Combos & Menu",
+                promoTelegram: "Order via Telegram",
+                testimonialsEyebrow: "GUEST LOVE",
+                testimonialsTitle: "What Our Guests Say",
+                review1Text: "\"The Efrata Special is juicy, flavorful, and generously served, and their layered avocado-mango juice is the freshest in Bale Robe!\"",
+                review2Text: "\"Clean atmosphere, welcoming staff, and generous portions. Their Efrata Special Salad and Kalazoni Pizza are our family's weekend favorite.\"",
+                review3Text: "\"You can immediately taste that every juice and shake is blended fresh to order without artificial syrups. Best spot in town!\"",
+                reviewGuestLabel: "Regular Guest",
+                menuEyebrow: "CRAFTED FRESH TO ORDER",
+                menuTitle: "Our Full Digital Menu",
+                menuSubtitle: "Explore our crisp salads, 100% pure fruit juices, thick shakes, stone-baked pizzas, and baked lasagna.",
+                searchPlaceholder: "Search dishes, juices, ingredients...",
+                noResultsTitle: "No matching dishes found",
+                noResultsSub: "Try selecting another category or clearing your search.",
+                addToOrder: "Add to Order",
+                galleryEyebrow: "VISUAL FEAST",
+                galleryTitle: "Efrata Culinary Gallery",
+                gallerySubtitle: "A closer look at our vibrant cold-pressed juices, flame-grilled specialties, crisp salads, stone-baked pizzas, and warm dining ambiance.",
+                galAll: "All Photos",
+                galAtmosphere: "Atmosphere",
+                aboutEyebrow: "OUR STORY & CRAFT",
+                aboutTitle: "Where Fresh Harvest Meets Culinary Passion.",
+                aboutLead: "Founded with a simple promise—to serve wholesome, vibrant, and deeply satisfying food—Efrata Juice & Burger has become a beloved gathering place for families, friends, and food lovers in Bale Robe.",
+                aboutBody: "Every morning begins with hand-selecting sun-ripened avocados, mangoes, papayas, strawberries, and crisp garden greens alongside premium cuts of beef and chicken. Nothing is pre-bottled or rushed; every dish is cooked to order and every juice is pressed fresh when you ask for it.",
+                pillar1Title: "Farm-Fresh Ingredients",
+                pillar1Desc: "We partner with local growers for peak-season fruits, crisp lettuce, ripe tomatoes, and aromatic herbs delivered daily.",
+                pillar2Title: "Uncompromising Quality",
+                pillar2Desc: "100% pure fruit juices with zero artificial flavors, paired with freshly seasoned meats and house-made sauces.",
+                pillar3Title: "Guest Satisfaction",
+                pillar3Desc: "Warm Ethiopian hospitality is at the heart of every table we serve, ensuring fast, attentive, and friendly care.",
+                pillar4Title: "Our Mission & Values",
+                pillar4Desc: "To nourish our community with honest, vibrant, and memorable meals that bring people together every single day.",
+                contactEyebrow: "VISIT OR ORDER DIRECTLY",
+                contactTitle: "Contact Efrata Juice & Burger",
+                contactSubtitle: "We look forward to welcoming you at Biyaaf Market Center, First Floor, Bale Robe for dine-in, takeaway, or fast Telegram ordering.",
+                contactPhoneLabel: "Phone / Telegram & Direct Orders",
+                contactPhoneSub: "Available during opening hours for takeout & table reservations",
+                contactLocationLabel: "Restaurant Location",
+                contactHoursLabel: "Opening Hours",
+                editBtn: "Update Info",
+                customizeStoreTitle: "Customize Store Details",
+                saveBtn: "Save & Update Map",
+                btnWhatsAppChat: "Chat & Order on WhatsApp",
+                btnTelegramChat: "Message on Telegram (+251 96 744 2641)",
+                footerTagline: "Fresh Taste, Delicious Moments. Serving handcrafted burgers, 100% natural fresh juices, smoothies, salads, and wood-fired favorites.",
+                footerLinksTitle: "Quick Links",
+                footerMenuTitle: "Menu Categories",
+                footerContactTitle: "Get In Touch",
+                footerRights: "All rights reserved.",
+                footerMadeWith: "Crafted with fresh ingredients & hospitality.",
+                drawerTitle: "Your Order",
+                drawerTotal: "Estimated Total",
+                drawerCheckoutBtn: "Send Order via Telegram",
+                drawerEmpty: "Your order bag is empty. Add delicious items from the menu!"
+            },
+            am: {
+                topBannerFresh: "100% ትኩስ የተፈጥሮ ጁሶች እና በእጅ የተዘጋጁ ጣፋጭ ምግቦች",
+                topBannerHours: "በየቀኑ ክፍት ነው: ጠዋት 1:30 – ምሽት 4:30",
+                navHome: "መነሻ",
+                navMenu: "ሜኑ",
+                navGallery: "ጋለሪ",
+                navAbout: "ስለ እኛ",
+                navContact: "ያግኙን",
+                selectLangLabel: "ቋንቋ",
+                btnOrderNow: "አሁኑኑ ይዘዙ",
+                btnExploreMenu: "ሜኑአችንን ይመልከቱ",
+                heroBadge: "ኤፍራታ ጁስ እና በርገር",
+                heroHeadline: "ትኩስ ጣዕም፣ አስደሳች ጊዜያት።",
+                heroSubtitle: "ትኩስ ፍራፍሬ ጁሶችን፣ ወፍራም ስሙዚዎችን፣ ጣፋጭ ፒዛዎችን፣ ላዛኛ እና ትኩስ ሰላጣዎችን በየቀኑ በንጽህና እናቀርባለን።",
+                statNatural: "የተፈጥሮ ፍራፍሬ",
+                statMenuItems: "ልዩ ምግቦች",
+                statGuests: "ደስተኛ ደንበኞች",
+                heroCardTag: "ትኩስ የተጨመቀ",
+                heroCardTitle: "የኤፍራታ ስፔሻል ጁስ",
+                heroCardSub: "አቮካዶ፣ ማንጎ፣ ፓፓያ እና ማር",
+                catAll: "ሁሉም ምግቦች",
+                catSalads: "ሰላጣዎች",
+                catJuices: "ትኩስ ጁሶች",
+                catSmoothies: "ስሙዚ እና ሼክ",
+                catBurgers: "በርገሮች",
+                catPizza: "ፒዛ",
+                catLasagna: "ላዛኛ",
+                catOthers: "ሌሎች ልዩ ምግቦች",
+                featuredEyebrow: "የሼፉ ምርጫዎች",
+                featuredTitle: "ተወዳጅ ምግቦች እና ትኩስ መጠጦች",
+                viewFullMenu: "ሙሉ ሜኑ ይመልከቱ",
+                promoBadge: "የዕለቱ ልዩ ጥምረት",
+                promoTitle: "የኤፍራታ ስፔሻል እና ትኩስ ጁስ",
+                promoDesc: "ማንኛውንም የኤፍራታ ልዩ ምግብ ወይም ፒዛ ከትኩስ የተፈጥሮ ፍራፍሬ ጁስ ጋር አጣምረው አስደሳች ጊዜ ያሳልፉ።",
+                promoBtn: "ሜኑውን ይመልከቱ",
+                promoTelegram: "በቴሌግራም ይዘዙ",
+                testimonialsEyebrow: "የደንበኞች አስተያየት",
+                testimonialsTitle: "ደንበኞቻችን ምን ይላሉ",
+                review1Text: "\"የኤፍራታ ስፔሻል በጣም ጣፋጭ እና በቂ ነው፤ በንብርብር የሚዘጋጀው የአቮካዶና ማንጎ ጁሳቸው ደግሞ በባሌ ሮቤ ተወዳዳሪ የለውም!\"",
+                review2Text: "\"ንጹህ ድባብ፣ ተግባቢ መስተንግዶ እና በቂ መጠን። የኤፍራታ ስፔሻል ሰላጣ እና ካልዞኒ ፒዛ የቤተሰባችን ምርጫ ናቸው።\"",
+                review3Text: "\"እያንዳንዱ ጁስና ሼክ ያለምንም ሰው ሰራሽ ማጣፈጫ ትኩስ ሆኖ እንደሚዘጋጅ ወዲያው ያስታውቃል።\"",
+                reviewGuestLabel: "ቋሚ ደንበኛ",
+                menuEyebrow: "ትኩስ ሆኖ የሚዘጋጅ",
+                menuTitle: "ሙሉ የምግብ እና መጠጥ ሜኑ",
+                menuSubtitle: "ትኩስ ሰላጣዎችን፣ 100% የተፈጥሮ ጁሶችን፣ ሼኮችን፣ ፒዛዎችን እና ስፔሻል ላዛኛን ይመልከቱ።",
+                searchPlaceholder: "ምግቦችን፣ ጁሶችን ይፈልጉ...",
+                noResultsTitle: "ምንም ተዛማጅ ምግብ አልተገኘም",
+                noResultsSub: "እባክዎ ሌላ ምድብ ይምረጡ ወይም ፍለጋዎን ያጽዱ።",
+                addToOrder: "ወደ ትዕዛዝ ጨምር",
+                galleryEyebrow: "የምግብ ምስሎች",
+                galleryTitle: "የኤፍራታ የምግብ ጋለሪ",
+                gallerySubtitle: "ትኩስ ጁሶቻችንን፣ ስፔሻል ምግቦቻችንን፣ ሰላጣዎችን፣ ፒዛዎችን እና ምቹ የመመገቢያ ቦታችንን ይመልከቱ።",
+                galAll: "ሁሉም ፎቶዎች",
+                galAtmosphere: "የሬስቶራንቱ ድባብ",
+                aboutEyebrow: "ታሪካችን እና ጥራታችን",
+                aboutTitle: "ትኩስ ምርት ከምግብ አዘገጃጀት ጥበብ ጋር ሲገናኝ።",
+                aboutLead: "ጤናማ፣ ትኩስ እና አርኪ ምግቦችን ለማቅረብ በገባነው ቃል መሰረት ኤፍራታ ጁስ እና በርገር በባሌ ሮቤ ለቤተሰቦችና ለጓደኞች ተወዳጅ መገናኛ ሆኗል።",
+                aboutBody: "በየቀኑ ማለዳ ትኩስ አቮካዶ፣ ማንጎ፣ ፓፓያ፣ እንጆሪ እና አትክልቶችን ከምርጥ ስጋ ጋር በመምረጥ እንጀምራለን። ሁሉም ትዕዛዞች ሲጠየቁ ብቻ ትኩስ ሆነው ይዘጋጃሉ።",
+                pillar1Title: "ትኩስ ግብዓቶች",
+                pillar1Desc: "በየቀኑ የሚደርሱ ትኩስ ፍራፍሬዎችን፣ ሰላጣዎችን እና ቅመማ ቅመሞችን እንጠቀማለን።",
+                pillar2Title: "የማይለወጥ ጥራት",
+                pillar2Desc: "100% ንጹህ የፍራፍሬ ጁሶች ያለ ሰው ሰራሽ ማጣፈጫ እና በልዩ ሁኔታ የተቀመሙ ምግቦች።",
+                pillar3Title: "የደንበኛ እርካታ",
+                pillar3Desc: "ሞቅ ያለ ኢትዮጵያዊ እንግዳ ተቀባይነት እና ፈጣን አገልግሎት መለያችን ነው።",
+                pillar4Title: "ተልዕኮ እና እሴቶቻችን",
+                pillar4Desc: "ማህበረሰባችንን በንጹህ፣ ጣፋጭ እና አስደሳች ምግቦች በየቀኑ ማገልገል።",
+                contactEyebrow: "ይጎብኙን ወይም በቀጥታ ይዘዙ",
+                contactTitle: "ኤፍራታ ጁስ እና በርገርን ያግኙ",
+                contactSubtitle: "በባሌ ሮቤ ቢያፍ ማርኬት ሴንተር 1ኛ ፎቅ መጥተው እንዲመገቡ ወይም በስልክ እና በቴሌግራም እንዲያዙ በደስታ እንቀበላለን።",
+                contactPhoneLabel: "ስልክ / ቴሌግራም እና ቀጥታ ትዕዛዝ",
+                contactPhoneSub: "ለትዕዛዝ እና ለቦታ ማስያዝ በስራ ሰዓት ይደውሉልን",
+                contactLocationLabel: "የሬስቶራንቱ አድራሻ",
+                contactHoursLabel: "የስራ ሰዓት",
+                editBtn: "መረጃ ያድሱ",
+                customizeStoreTitle: "የሬስቶራንቱን መረጃ ያስተካክሉ",
+                saveBtn: "አስቀምጥ እና ካርታ አድስ",
+                btnTelegramChat: "በቴሌግራም ያውሩ (+251 96 744 2641)",
+                footerTagline: "ትኩስ ጣዕም፣ አስደሳች ጊዜያት። ትኩስ ፍራፍሬ ጁሶች፣ ስሙዚዎች፣ ሰላጣዎች፣ ፒዛ እና ላዛኛ በየቀኑ እናቀርባለን።",
+                footerLinksTitle: "ፈጣን አገናኞች",
+                footerMenuTitle: "የሜኑ ምድቦች",
+                footerContactTitle: "ያግኙን",
+                footerRights: "መብቱ በህግ የተጠበቀ ነው።",
+                footerMadeWith: "በትኩስ ግብዓቶች እና በፍቅር የተዘጋጀ።",
+                drawerTitle: "የእርስዎ ትዕዛዝ",
+                drawerTotal: "ጠቅላላ ግምት",
+                drawerCheckoutBtn: "ትዕዛዝ በቴሌግራም ይላኩ",
+                drawerEmpty: "የትዕዛዝ ቦርሳዎ ባዶ ነው። ከሜኑ ውስጥ ምግቦችን ይጨምሩ!"
+            },
+            om: {
+                topBannerFresh: "Cuunfaa Fuduraa Uumamaa 100% fi Nyaata Haarawa Harka Keenyaan Qophaa'e",
+                topBannerHours: "Guyyaa Hunda Banaadha: Ganama 1:30 – Halkan 4:30",
+                navHome: "Mana",
+                navMenu: "Meenuu",
+                navGallery: "Gaalerii",
+                navAbout: "Waa'ee Keenya",
+                navContact: "Nu Quunnamaa",
+                selectLangLabel: "Afaan",
+                btnOrderNow: "Amma Ajajaa",
+                btnExploreMenu: "Meenuu Keenya Ilaalaa",
+                heroBadge: "EFRATA JUICE & BURGER",
+                heroHeadline: "Dhandhama Haarawaa, Yeroo Mi'aawaa.",
+                heroSubtitle: "Cuunfaa fuduraa haarawa, sheekii, piizaa, laazaanyaa fi salaaxaa haarawa guyyaa guyyaan meeshaalee qulqulluu irraa qophaa'an dhandhamaa.",
+                statNatural: "Fuduraa Uumamaa",
+                statMenuItems: "Nyaata Addaa",
+                statGuests: "Maamiltoota Gammadoo",
+                heroCardTag: "Haarawa Cuunfeffame",
+                heroCardTitle: "Cuunfaa Addaa Efrata",
+                heroCardSub: "Avokaadoo, Maangoo, Paappaayyaa fi Damma",
+                catAll: "Hunda",
+                catSalads: "Salaaxaa",
+                catJuices: "Cuunfaa Haarawa",
+                catSmoothies: "Ismuuzii fi Sheekii",
+                catBurgers: "Bargarii",
+                catPizza: "Piizaa",
+                catLasagna: "Laazaanyaa",
+                catOthers: "Nyaata Addaa Biroo",
+                featuredEyebrow: "FILANNOO SHEEFII",
+                featuredTitle: "Nyaata fi Dhugaatii Filatamoo",
+                viewFullMenu: "Meenuu Guutuu Ilaalaa",
+                promoBadge: "ADDAA GUYIAA",
+                promoTitle: "Nyaata Addaa Efrata fi Cuunfaa Haarawa",
+                promoDesc: "Nyaata addaa Efrata ykn piizaa kamuu cuunfaa fuduraa haarawa waliin walitti qabsiisuun guyyaa keessan mi'eeffadhaa.",
+                promoBtn: "Meenuu Ilaalaa",
+                promoTelegram: "Telegram Irratti Ajajaa",
+                testimonialsEyebrow: "YAADA MAAMILTOOTAA",
+                testimonialsTitle: "Maamiltoonni Keenya Maal Jedhu",
+                review1Text: "\"Efrata Special baay'ee mi'aawaa fi quubsaadha; cuunfaan avokaadoo fi maangoo isaanii immoo Baalee Roobee keessatti isa hunda caaluudha!\"",
+                review2Text: "\"Naannoo qulqulluu, keessummeessitoota gaarii fi nyaata quubsaa. Salaaxaa Addaa Efrata fi Piizaa Kaalzoonii filannoo maatii keenyaati.\"",
+                review3Text: "\"Cuunfaanii fi sheekiin hundi otoo wanti namtolchee itti hin dabalamin haarawa ta'ee akka qophaa'u dhandhama isaa irraa beekama.\"",
+                reviewGuestLabel: "Maamila Dhaabbataa",
+                menuEyebrow: "AJAJA KEESSANIIN HAARAWA QOPHAA'A",
+                menuTitle: "Meenuu Dijitaalaa Guutuu",
+                menuSubtitle: "Salaaxaa haarawa, cuunfaa fuduraa 100%, sheekii, piizaa fi laazaanyaa addaa keenya filadhaa.",
+                searchPlaceholder: "Nyaata, cuunfaa barbaadi...",
+                noResultsTitle: "Nyaanni barbaaddan hin argamne",
+                noResultsSub: "Maaloo gosa biraa filadhaa ykn barbaacha haqaa.",
+                addToOrder: "Ajajatti Dabali",
+                galleryEyebrow: "SUURAAWWAN NYAATAA",
+                galleryTitle: "Gaalerii Nyaataa Efrata",
+                gallerySubtitle: "Suuraawwan cuunfaa haarawa, nyaata addaa, salaaxaa, piizaa fi haala mijataa mana nyaataa keenyaa daawwadhaa.",
+                galAll: "Suuraa Hunda",
+                galAtmosphere: "Haala Mana Nyaataa",
+                aboutEyebrow: "SEENAA FI QULQULLINA KEENYA",
+                aboutTitle: "Bakka Oomishni Haarawaan Ogummaa Nyaataa Waliin Wal Argu.",
+                aboutLead: "Waadaa nyaata qulqulluu, haarawa fi mi'aawaa dhiyeessuuf seenneen Efrata Juice & Burger Baalee Roobee keessatti bakka jaallatamaa maatii fi hiriyootaa ta'eera.",
+                aboutBody: "Ganama hundaa avokaadoo, maangoo, paappaayyaa, istirooberii fi kuduraalee haarawa akkasumas foon qulqulluu filachuun hojii keenya jalqabna. Nyaanni hundi yeroo ajajaman haarawa ta'anii qophaa'u.",
+                pillar1Title: "Meeshaalee Haarawa",
+                pillar1Desc: "Fuduraalee fi kuduraalee haarawa guyyaa guyyaan qonnaan bultoota naannoo irraa dhufan fayyadamna.",
+                pillar2Title: "Qulqullina Olaanaa",
+                pillar2Desc: "Cuunfaa fuduraa qulqulluu 100% wanta namtolchee hin qabnee fi nyaata mi'aawaa.",
+                pillar3Title: "Itti Quufinsa Maamilaa",
+                pillar3Desc: "Keessummeessummaa ho'aa fi tajaajila saffisaa maamiltoota keenya hundaaf ni kennina.",
+                pillar4Title: "Ergama fi Duudhaalee",
+                pillar4Desc: "Hawaasa keenyaaf nyaata qulqulluu fi mi'aawaa guyyaa hundaa dhiyeessuu.",
+                contactEyebrow: "NU DAAWWADHAA YKN AJAJAA",
+                contactTitle: "Efrata Juice & Burger Quunnamaa",
+                contactSubtitle: "Biyaaf Market Center, Fooqii 1ffaa, Baalee Roobeetti dhuftanii nyaachuuf ykn bilbilaa fi Telegram irratti ajajuuf qophiidha.",
+                contactPhoneLabel: "Bilbilaa / Telegram fi Ajaja Kallattii",
+                contactPhoneSub: "Sa'aatii hojii keessatti ajaja fudhachuu fi bakka qabsiisuuf ni danda'ama",
+                contactLocationLabel: "Bakka Mana Nyaataa",
+                contactHoursLabel: "Sa'aatii Hojii",
+                editBtn: "Odeeffannoo Haaromsi",
+                customizeStoreTitle: "Odeeffannoo Mana Nyaataa Sirreessi",
+                saveBtn: "Ol Kaa'i fi Kaartaa Haaromsi",
+                btnTelegramChat: "Telegram Irratti Ergaa Dhiyeessaa (+251 96 744 2641)",
+                footerTagline: "Dhandhama Haarawaa, Yeroo Mi'aawaa. Cuunfaa fuduraa uumamaa 100%, sheekii, salaaxaa, piizaa fi laazaanyaa addaa dhiyeessina.",
+                footerLinksTitle: "Geessituu Saffisaa",
+                footerMenuTitle: "Gosa Meenuu",
+                footerContactTitle: "Nu Quunnamaa",
+                footerRights: "Mirgi isaa seeraan eegamaadha.",
+                footerMadeWith: "Meeshaalee haarawa fi jaalalaan qophaa'e.",
+                drawerTitle: "Ajaja Keessanii",
+                drawerTotal: "Waliigala Tilmaamaa",
+                drawerCheckoutBtn: "Ajaja Telegram Irratti Ergi",
+                drawerEmpty: "Borsaan ajaja keessanii duwwaadha. Meenuu keessaa nyaata filadhaa!"
+            }
+        };
+
+        /**
+         * 3. COMPLETE MENU DATA (menu.js) — Preserving exact verified menu items & prices
+         */
+        const MENU_ITEMS = [
+            // 1. Salads
+            {
+                id: "tuna-salad",
+                category: "salads",
+                price: 500,
+                featured: false,
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80",
+                name: {
+                    en: "Tuna Salad",
+                    am: "ቱና ሰላጣ",
+                    om: "Salaaxaa Tuunaa"
+                },
+                desc: {
+                    en: "Flaked tuna tossed with crisp lettuce, vine tomatoes, cucumbers, red onions, and zesty house dressing.",
+                    am: "ከትኩስ ሰላጣ፣ ቲማቲም፣ ኪያር፣ ቀይ ሽንኩርት እና ልዩ መረቅ ጋር የተዘጋጀ ቱና ሰላጣ።",
+                    om: "Tuunaa salaaxaa haarawa, timaatima, khiyaara, shunkurtaa diimaa fi soosii addaa waliin qophaa'e."
+                }
+            },
+            {
+                id: "chicken-salad",
+                category: "salads",
+                price: 600,
+                featured: false,
+                image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80",
+                name: {
+                    en: "Chicken Salad",
+                    am: "የዶሮ ሰላጣ",
+                    om: "Salaaxaa Lukkuu"
+                },
+                desc: {
+                    en: "Tender seasoned chicken paired with crisp greens, sweet peppers, crunchy vegetables, and fresh dressing.",
+                    am: "በጥሩ ሁኔታ ከተዘጋጀ የዶሮ ስጋ፣ ከትኩስ ቅጠላ ቅጠል እና ከአትክልት ጋር የቀረበ ሰላጣ።",
+                    om: "Foon lukkuu mi'aawaa kuduraalee haarawa, salaxaa fi dhandhama addaa waliin dhiyaate."
+                }
+            },
+            {
+                id: "efrata-special-salad",
+                category: "salads",
+                price: 700,
+                featured: true,
+                image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80",
+                name: {
+                    en: "Efrata Special Salad",
+                    am: "የኤፍራታ ስፔሻል ሰላጣ",
+                    om: "Salaaxaa Addaa Efrata"
+                },
+                desc: {
+                    en: "Our signature loaded garden salad crafted with fresh seasonal produce and Efrata's signature finishing touch.",
+                    am: "በትኩስ የወቅቱ አትክልቶች እና በኤፍራታ ልዩ አዘገጃጀት የቀረበ ስፔሻል ሰላጣ።",
+                    om: "Salaaxaa addaa kuduraalee haarawa filatamoo fi qophii addaa Efrataan dhiyaate."
+                }
+            },
+            {
+                id: "special-salad",
+                category: "salads",
+                price: 600,
+                featured: false,
+                image: "https://images.unsplash.com/photo-1607532941433-304659e8198a?auto=format&fit=crop&w=800&q=80",
+                name: {
+                    en: "Special Salad",
+                    am: "ስፔሻል ሰላጣ",
+                    om: "Salaaxaa Addaa"
+                },
+                desc: {
+                    en: "Vibrant mixed vegetable salad layered with crisp garden greens, ripe tomatoes, and savory seasoning.",
+                    am: "በተለያዩ ትኩስ አትክልቶች እና በጣፋጭ መረቅ የተዘጋጀ ስፔሻል ሰላጣ።",
+                    om: "Kuduraalee garaagaraa haarawa, timaatima bilchaataa fi soosii mi'aawaan qophaa'e."
+                }
+            },
+
+            // 2. Fresh Juices
+            {
+                id: "efrata-special-juice",
+                category: "juices",
+                price: 200,
+                featured: true,
+                image: "https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=800&q=80",
+                name: {
+                    en: "Efrata Special Juice",
+                    am: "የኤፍራታ ስፔሻል ጁስ",
+                    om: "Cuunfaa Addaa Efrata"
+                },
+                desc: {
+                    en: "100% fresh pressed multi-layered tropical fruit juice blended to order with zero artificial syrups.",
+                    am: "ያለምንም ሰው ሰራሽ ማጣፈጫ ትኩስ ሆኖ በንብርብር የተዘጋጀ የኤፍራታ ስፔሻል የፍራፍሬ ጁስ።",
+                    om: "Cuunfaa fuduraa uumamaa 100% kan yeroo ajajaman haarawa ta'ee baqqaanaan qophaa'u."
+                }
+            },
+
+            // 3. Smoothies and Shakes
+            {
+                id: "avocado-shake",
+                category: "smoothies",
+                price: 200,
+                featured: true,
+                image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+                name: {
+                    en: "Avocado Shake",
+                    am: "አቮካዶ ሼክ",
+                    om: "Sheekii Avokaadoo"
+                },
+                desc: {
+                    en: "Rich, creamy avocado blended smooth and chilled for a velvety, nourishing shake.",
+                    am: "በጣም ለስላሳ እና ወፍራም ሆኖ የተዘጋጀ ትኩስ እና ቀዝቃዛ የአቮካዶ ሼክ።",
+                    om: "Avokaadoo bilchaataa irraa qophaa'ee kan furdaa, laafaa fi qabbanaa'aa ta'e."
+                }
+            },
+            {
+                id: "protein-shake",
+                category: "smoothies",
+                price: 280,
+                featured: false,
+                image: "https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=800&q=80",
+                name: {
+                    en: "Protein Shake",
+                    am: "ፕሮቲን ሼክ",
+                    om: "Sheekii Pirotiinii"
+                },
+                desc: {
+                    en: "Energizing, hearty shake crafted to keep you fueled and satisfied throughout the day.",
+                    am: "ሙሉ ቀን ጉልበት እና እርካታ የሚሰጥ ወፍራም እና ገንቢ የፕሮቲን ሼክ።",
+                    om: "Humnaa fi quufinsa guutuu guyyaaf kennuuf sheekii qulqulluu qophaa'e."
+                }
+            },
+            {
+                id: "strawberry-shake",
+                category: "smoothies",
+                price: 210,
+                featured: false,
+                image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=800&q=80",
+                name: {
+                    en: "Strawberry Shake",
+                    am: "ስትሮቤሪ ሼክ",
+                    om: "Sheekii Istirooberii"
+                },
+                desc: {
+                    en: "Sweet, aromatic strawberry shake blended fresh with a smooth, refreshing finish.",
+                    am: "በጣፋጭ እና መዓዛ ባለው ትኩስ እንጆሪ የተዘጋጀ ለስላሳ ስትሮቤሪ ሼክ።",
+                    om: "Istirooberii haarawa urgooftuu fi mi'ooftuu irraa qophaa'ee kan dhandhama addaa qabu."
+                }
+            },
+
+            // 5. Pizza
+            {
+                id: "margarita-pizza",
+                category: "pizza",
+                price: 550,
+                featured: false,
+                image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80",
+                name: {
+                    en: "Margarita Pizza",
+                    am: "ማርጋሪታ ፒዛ",
+                    om: "Piizaa Maargaariitaa"
+                },
+                desc: {
+                    en: "Classic baked pizza topped with rich tomato sauce, melted cheese, and fresh aromatic herbs.",
+                    am: "በበለጸገ የቲማቲም መረቅ፣ በቀለጠ አይብ እና በቅጠላ ቅጠል የተጋገረ ክላሲክ ፒዛ።",
+                    om: "Soosii timaatimaa, jiisii baqee fi baala urgooftuutiin kan tolche piizaa aadaa."
+                }
+            },
+            {
+                id: "fore-season-pizza",
+                category: "pizza",
+                price: 700,
+                featured: false,
+                image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80",
+                name: {
+                    en: "Fore Season Pizza",
+                    am: "ፎር ሲዝን ፒዛ",
+                    om: "Piizaa Foor Siizanii"
+                },
+                desc: {
+                    en: "Four-section oven-baked pizza offering distinct, complementary toppings in every slice.",
+                    am: "በእያንዳንዱ ቁራጭ ልዩ እና የተመጣጠነ ጣዕም ያላቸው አራት ክፍሎች ያሉት ፒዛ።",
+                    om: "Kutaa afur kan dhandhama adda addaa qabaniin kan guutame piizaa boqonnaa afurii."
+                }
+            },
+            {
+                id: "kalazoni-pizza",
+                category: "pizza",
+                price: 650,
+                featured: false,
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80",
+                name: {
+                    en: "Kalazoni Pizza",
+                    am: "ካልዞኒ ፒዛ",
+                    om: "Piizaa Kaalzoonii"
+                },
+                desc: {
+                    en: "Golden folded pizza pocket baked until crisp outside and savory, tender, and flavorful inside.",
+                    am: "ከውጭ ወርቃማ እና ጥርት ያለ፣ ከውስጥ ደግሞ በጣፋጭ ቅልቅል የተሞላ ካልዞኒ ፒዛ።",
+                    om: "Alatti warqee fi qabbanaa'aa ta'ee keessa isaatti dhandhama mi'aawaan kan guutame."
+                }
+            },
+            {
+                id: "efrata-science-pizza",
+                category: "pizza",
+                price: 700,
+                featured: false,
+                image: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4f?auto=format&fit=crop&w=800&q=80",
+                name: {
+                    en: "Efrata Science Pizza",
+                    am: "የኤፍራታ ሳይንስ ፒዛ",
+                    om: "Piizaa Saayinsii Efrata"
+                },
+                desc: {
+                    en: "Signature house creation crafted with generous toppings, golden crust, and Efrata's special recipe.",
+                    am: "በልዩ የኤፍራታ አዘገጃጀት እና በተትረፈረፈ መለዋወጫ የተጋገረ ልዩ ፒዛ።",
+                    om: "Qophii addaa Efrata fi meeshaalee hedduun kan tolche piizaa filatamaa."
+                }
+            },
+
+            // 6. Lasagna
+            {
+                id: "special-efrata-lasagna",
+                category: "lasagna",
+                price: 1000,
+                featured: true,
+                image: "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=800&q=80",
+                name: {
+                    en: "Special Efrata Lasagna",
+                    am: "ስፔሻል የኤፍራታ ላዛኛ",
+                    om: "Laazaanyaa Addaa Efrata"
+                },
+                desc: {
+                    en: "Oven-baked layered pasta dish rich with savory sauce, melted cheese, and Efrata's signature touch.",
+                    am: "በጣፋጭ መረቅ እና በቀለጠ አይብ ተደራርቦ በምድጃ የተጋገረ ስፔሻል የኤፍራታ ላዛኛ።",
+                    om: "Baqqaana paastaa, soosii mi'aawaa fi jiisii baqeen kan qophaa'e laazaanyaa addaa."
+                }
+            },
+
+            // 7. Other Existing Menu Items
+            {
+                id: "efrata-special",
+                category: "others",
+                price: 500,
+                featured: true,
+                image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80",
+                name: {
+                    en: "Efrata Special",
+                    am: "ኤፍራታ ስፔሻል",
+                    om: "Efrata Addaa"
+                },
+                desc: {
+                    en: "Our signature house special prepared fresh to order with bold flavors and generous presentation.",
+                    am: "በልዩ ጣዕም እና በሚያምር አቀራረብ ትኩስ ሆኖ የሚዘጋጅ የኤፍራታ ስፔሻል ምግብ።",
+                    om: "Dhandhama addaa fi qophii qulqulluudhaan yeroo ajajaman haarawa kan qophaa'u."
+                }
+            },
+            {
+                id: "efrata-burger",
+                category: "burgers",
+                price: 500,
+                featured: false,
+                image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80",
+                name: {
+                    en: "Efrata Burger",
+                    am: "ኤፍራታ በርገር",
+                    om: "Bargarii Efrata"
+                },
+                desc: {
+                    en: "Handcrafted burger served with crisp greens, fresh tomatoes, and savory house sauce.",
+                    am: "ከትኩስ ሰላጣ፣ ቲማቲም እና ልዩ መረቅ ጋር በእጅ የተዘጋጀ በርገር።",
+                    om: "Bargarii salaxaa haarawa, timaatimaa fi soosii addaa waliin qophaa'e."
+                }
+            }
+        ];
+
+        /**
+         * 4. GALLERY DATA (Matched accurately to food categories & dining atmosphere)
+         */
+        const GALLERY_ITEMS = [
+            {
+                id: "gal-1",
+                category: "juices",
+                image: "https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=900&q=85",
+                title: { en: "Efrata Special Layered Juice", am: "የኤፍራታ ስፔሻል ጁስ", om: "Cuunfaa Addaa Efrata" }
+            },
+            {
+                id: "gal-2",
+                category: "smoothies",
+                image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=900&q=85",
+                title: { en: "Creamy Avocado Shake", am: "አቮካዶ ሼክ", om: "Sheekii Avokaadoo" }
+            },
+            {
+                id: "gal-3",
+                category: "smoothies",
+                image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=900&q=85",
+                title: { en: "Fresh Strawberry Shake", am: "ስትሮቤሪ ሼክ", om: "Sheekii Istirooberii" }
+            },
+            {
+                id: "gal-4",
+                category: "salads",
+                image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=85",
+                title: { en: "Efrata Special Salad", am: "የኤፍራታ ስፔሻል ሰላጣ", om: "Salaaxaa Addaa Efrata" }
+            },
+            {
+                id: "gal-5",
+                category: "salads",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=85",
+                title: { en: "Fresh Tuna & Greens Salad", am: "ቱና ሰላጣ", om: "Salaaxaa Tuunaa" }
+            },
+            {
+                id: "gal-6",
+                category: "pizza",
+                image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=85",
+                title: { en: "Oven-Baked Margarita Pizza", am: "ማርጋሪታ ፒዛ", om: "Piizaa Maargaariitaa" }
+            },
+            {
+                id: "gal-7",
+                category: "pizza",
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=85",
+                title: { en: "Golden Kalazoni Pizza", am: "ካልዞኒ ፒዛ", om: "Piizaa Kaalzoonii" }
+            },
+            {
+                id: "gal-8",
+                category: "burgers",
+                image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85",
+                title: { en: "Efrata Special", am: "ኤፍራታ ስፔሻል", om: "Efrata Addaa" }
+            },
+            {
+                id: "gal-9",
+                category: "atmosphere",
+                image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=85",
+                title: { en: "Warm Dining Atmosphere", am: "ምቹ የመመገቢያ ድባብ", om: "Haala Nyaataa Mijataa" }
+            }
+        ];
+
+        /**
+         * 5. APPLICATION STATE
+         */
+        let currentLang = localStorage.getItem('efrata_lang') || 'en';
+        let activePage = 'home';
+        let activeMenuCategory = 'all';
+        let activeGalleryCategory = 'all';
+        let lightboxIndex = 0;
+        let filteredGalleryList = [...GALLERY_ITEMS];
+        let cart = [];
+
+        // Restore saved store details if customized
+        try {
+            const savedStore = JSON.parse(localStorage.getItem('efrata_store_details'));
+            if (savedStore) {
+                Object.assign(STORE_CONFIG, savedStore);
+                if (STORE_CONFIG.telegramPhone === '251968225768') {
+                    STORE_CONFIG.phoneDisplay = '+251 96 744 2641';
+                    STORE_CONFIG.telegramPhone = '251967442641';
+                    localStorage.setItem('efrata_store_details', JSON.stringify(STORE_CONFIG));
+                }
+            }
+        } catch (err) {
+            console.warn('Could not load saved store details:', err);
+        }
+
+        /**
+         * 6. INITIALIZATION ON DOM READY
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            syncStoreDetailsUI();
+            setLanguage(currentLang, false);
+            renderFeaturedItems();
+            renderMenu();
+            renderGallery();
+            renderCart();
+        });
+
+        /**
+         * 7. SPA NAVIGATION & MOBILE MENU
+         */
+        function navigateTo(pageId) {
+            activePage = pageId;
+            document.querySelectorAll('.page-view').forEach(section => {
+                section.classList.add('hidden');
+            });
+            const target = document.getElementById(`page-${pageId}`);
+            if (target) {
+                target.classList.remove('hidden');
+            }
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.toggle('active', link.getAttribute('data-nav') === pageId);
+            });
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                const isActive = link.getAttribute('data-nav') === pageId;
+                link.classList.toggle('text-orange-600', isActive);
+                link.classList.toggle('bg-orange-50', isActive);
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openMenuCategory(category) {
+            navigateTo('menu');
+            setMenuCategory(category);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('mobileMenuIcon');
+            if (!menu) return;
+            const isHidden = menu.classList.toggle('hidden');
+            if (icon) {
+                icon.classList.toggle('fa-bars', isHidden);
+                icon.classList.toggle('fa-xmark', !isHidden);
+            }
+        }
+
+        /**
+         * 8. TRILINGUAL LANGUAGE SWITCHER (EN / AM / OM)
+         */
+        function toggleLangMenu() {
+            document.getElementById('langDropdown').classList.toggle('hidden');
+        }
+
+        function setLanguage(lang, closeDropdown = true) {
+            if (!TRANSLATIONS[lang]) lang = 'en';
+            currentLang = lang;
+            localStorage.setItem('efrata_lang', lang);
+            document.documentElement.lang = lang;
+
+            const labels = { en: 'EN', am: 'አማርኛ', om: 'OM' };
+            const labelEl = document.getElementById('currentLangLabel');
+            if (labelEl) labelEl.textContent = labels[lang];
+
+            document.querySelectorAll('.lang-option').forEach(opt => {
+                const active = opt.getAttribute('data-lang') === lang;
+                opt.classList.toggle('bg-orange-50', active);
+                opt.classList.toggle('text-orange-600', active);
+                opt.classList.toggle('font-bold', active);
+            });
+
+            const dict = TRANSLATIONS[lang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    el.textContent = dict[key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (dict[key]) {
+                    el.placeholder = dict[key];
+                }
+            });
+
+            if (closeDropdown) {
+                const dropdown = document.getElementById('langDropdown');
+                if (dropdown) dropdown.classList.add('hidden');
+            }
+
+            renderFeaturedItems();
+            renderMenu();
+            renderGallery();
+            renderCart();
+        }
+
+        /**
+         * 9. MENU RENDERING, CATEGORY FILTERING & SEARCH
+         */
+        function setMenuCategory(cat) {
+            activeMenuCategory = cat;
+            updateCategoryPillStyles();
+            renderMenu();
+        }
+
+        function updateCategoryPillStyles() {
+            document.querySelectorAll('.cat-pill').forEach(btn => {
+                const isSelected = btn.getAttribute('data-cat') === activeMenuCategory;
+                btn.classList.toggle('active', isSelected);
+                btn.classList.toggle('bg-orange-600', isSelected);
+                btn.classList.toggle('text-white', isSelected);
+                btn.classList.toggle('shadow-sm', isSelected);
+                btn.classList.toggle('bg-stone-100', !isSelected);
+                btn.classList.toggle('text-stone-700', !isSelected);
+            });
+        }
+
+        function createMenuCardHTML(item) {
+            const name = item.name[currentLang] || item.name.en;
+            const desc = item.desc[currentLang] || item.desc.en;
+            const addLabel = TRANSLATIONS[currentLang].addToOrder || 'Add to Order';
+            const formattedPrice = `${Number(item.price).toLocaleString('en-US')} ${STORE_CONFIG.currency}`;
+            const fallbackImg = item.category === 'burgers'
+                ? 'https://placehold.co/800x600/F97316/FFFFFF?text=Efrata+Burger'
+                : 'https://placehold.co/800x600/F59E0B/FFFFFF?text=Efrata+Menu';
+
+            return `
+                <article class="menu-card bg-white rounded-3xl shadow-soft border border-stone-100 overflow-hidden flex flex-col justify-between transition-all hover:shadow-xl">
+                    <div>
+                        <div class="relative h-52 overflow-hidden bg-stone-100">
+                            <img src="${item.image}"
+                                 onerror="this.onerror=null; this.src='${fallbackImg}'"
+                                 alt="${name}"
+                                 class="menu-card-img w-full h-full object-cover">
+                            <span class="absolute top-3.5 right-3.5 bg-white/95 backdrop-blur-xs text-stone-900 font-extrabold text-xs sm:text-sm px-3.5 py-1.5 rounded-full shadow-md">
+                                ${formattedPrice}
+                            </span>
+                        </div>
+                        <div class="p-5 sm:p-6">
+                            <h3 class="font-serif text-lg sm:text-xl font-bold text-stone-900 leading-snug">${name}</h3>
+                            <p class="text-stone-600 text-xs sm:text-sm mt-2 leading-relaxed">${desc}</p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 sm:px-6 sm:pb-6 pt-1">
+                        <button onclick="addToCart('${item.id}')" class="w-full py-3 px-4 rounded-xl bg-stone-900 hover:bg-orange-600 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors active:scale-[0.99]">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>${addLabel}</span>
+                        </button>
+                    </div>
+                </article>
+            `;
+        }
+
+        function renderFeaturedItems() {
+            const grid = document.getElementById('featuredMenuGrid');
+            if (!grid) return;
+            const featured = MENU_ITEMS.filter(item => item.featured).slice(0, 4);
+            grid.innerHTML = featured.map(createMenuCardHTML).join('');
+        }
+
+        function renderMenu() {
+            const container = document.getElementById('menuContainer');
+            const emptyState = document.getElementById('menuEmptyState');
+            if (!container) return;
+
+            const searchInput = document.getElementById('menuSearchInput');
+            const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+
+            const filtered = MENU_ITEMS.filter(item => {
+                const matchesCat = activeMenuCategory === 'all' || item.category === activeMenuCategory;
+                if (!matchesCat) return false;
+                if (!query) return true;
+
+                const allNames = Object.values(item.name).join(' ').toLowerCase();
+                const allDescs = Object.values(item.desc).join(' ').toLowerCase();
+                return allNames.includes(query) || allDescs.includes(query);
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = '';
+                if (emptyState) emptyState.classList.remove('hidden');
+                return;
+            }
+
+            if (emptyState) emptyState.classList.add('hidden');
+
+            const categoryOrder = ['salads', 'juices', 'smoothies', 'burgers', 'pizza', 'lasagna', 'others'];
+            const categoryTitleKeys = {
+                salads: 'catSalads',
+                juices: 'catJuices',
+                smoothies: 'catSmoothies',
+                burgers: 'catBurgers',
+                pizza: 'catPizza',
+                lasagna: 'catLasagna',
+                others: 'catOthers'
+            };
+
+            const catsToRender = activeMenuCategory === 'all'
+                ? categoryOrder.filter(cat => filtered.some(i => i.category === cat))
+                : [activeMenuCategory];
+
+            container.innerHTML = catsToRender.map(cat => {
+                const itemsInCat = filtered.filter(i => i.category === cat);
+                const titleKey = categoryTitleKeys[cat];
+                const headingText = TRANSLATIONS[currentLang][titleKey] || cat;
+
+                return `
+                    <div>
+                        <div class="flex items-center justify-between border-b border-stone-200 pb-3 mb-6">
+                            <h2 class="font-serif text-2xl sm:text-3xl font-extrabold text-stone-900">${headingText}</h2>
+                            <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-orange-100 text-orange-700">${itemsInCat.length}</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            ${itemsInCat.map(createMenuCardHTML).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        /**
+         * 10. GALLERY FILTERING & LIGHTBOX MODAL
+         */
+        function filterGallery(cat) {
+            activeGalleryCategory = cat;
+            document.querySelectorAll('.gal-pill').forEach(btn => {
+                const selected = btn.getAttribute('data-gcat') === cat;
+                btn.classList.toggle('bg-orange-600', selected);
+                btn.classList.toggle('text-white', selected);
+                btn.classList.toggle('bg-white', !selected);
+                btn.classList.toggle('text-stone-700', !selected);
+            });
+            renderGallery();
+        }
+
+        function renderGallery() {
+            const grid = document.getElementById('galleryGrid');
+            if (!grid) return;
+
+            filteredGalleryList = activeGalleryCategory === 'all'
+                ? [...GALLERY_ITEMS]
+                : GALLERY_ITEMS.filter(g => g.category === activeGalleryCategory);
+
+            grid.innerHTML = filteredGalleryList.map((item, idx) => {
+                const caption = item.title[currentLang] || item.title.en;
+                return `
+                    <button onclick="openLightbox(${idx})" class="group relative rounded-3xl overflow-hidden shadow-soft border border-stone-100 aspect-[4/3] text-left focus:outline-none">
+                        <img src="${item.image}"
+                             onerror="this.src='https://placehold.co/800x600/1C1917/FFFFFF?text=Efrata+Gallery'"
+                             alt="${caption}"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-85 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-5">
+                            <span class="text-[11px] font-bold uppercase tracking-widest text-amber-300">${item.category}</span>
+                            <h3 class="font-serif text-lg font-bold text-white mt-0.5">${caption}</h3>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function openLightbox(index) {
+            lightboxIndex = index;
+            updateLightboxContent();
+            document.getElementById('lightboxModal').classList.remove('hidden');
+        }
+
+        function updateLightboxContent() {
+            const item = filteredGalleryList[lightboxIndex];
+            if (!item) return;
+            document.getElementById('lightboxImg').src = item.image;
+            document.getElementById('lightboxCat').textContent = item.category;
+            document.getElementById('lightboxCaption').textContent = item.title[currentLang] || item.title.en;
+        }
+
+        function stepLightbox(direction, event) {
+            if (event) event.stopPropagation();
+            if (filteredGalleryList.length === 0) return;
+            lightboxIndex = (lightboxIndex + direction + filteredGalleryList.length) % filteredGalleryList.length;
+            updateLightboxContent();
+        }
+
+        function closeLightbox(event, force = false) {
+            if (force || (event && event.target.id === 'lightboxModal')) {
+                document.getElementById('lightboxModal').classList.add('hidden');
+            }
+        }
+
+        /**
+         * 11. ORDER BAG & TELEGRAM INTEGRATION
+         */
+        function toggleOrderDrawer() {
+            const drawer = document.getElementById('orderDrawer');
+            const backdrop = document.getElementById('orderDrawerBackdrop');
+            const isClosed = drawer.classList.contains('translate-x-full');
+            if (isClosed) {
+                drawer.classList.remove('translate-x-full');
+                backdrop.classList.remove('hidden');
+            } else {
+                drawer.classList.add('translate-x-full');
+                backdrop.classList.add('hidden');
+            }
+        }
+
+        function addToCart(itemId) {
+            const item = MENU_ITEMS.find(m => m.id === itemId);
+            if (!item) return;
+            const existing = cart.find(c => c.id === itemId);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ id: itemId, qty: 1 });
+            }
+            renderCart();
+            const itemName = item.name[currentLang] || item.name.en;
+            showToast(`+1 ${itemName}`);
+        }
+
+        function updateCartQty(itemId, delta) {
+            const idx = cart.findIndex(c => c.id === itemId);
+            if (idx === -1) return;
+            cart[idx].qty += delta;
+            if (cart[idx].qty <= 0) {
+                cart.splice(idx, 1);
+            }
+            renderCart();
+        }
+
+        function renderCart() {
+            const listEl = document.getElementById('orderItemsList');
+            const badgeEl = document.getElementById('cartBadge');
+            const totalEl = document.getElementById('orderTotalAmount');
+            if (!listEl) return;
+
+            const totalItems = cart.reduce((sum, c) => sum + c.qty, 0);
+            if (totalItems > 0) {
+                badgeEl.textContent = totalItems;
+                badgeEl.classList.remove('hidden');
+            } else {
+                badgeEl.classList.add('hidden');
+            }
+
+            if (cart.length === 0) {
+                listEl.innerHTML = `
+                    <div class="text-center py-14 text-stone-400 space-y-3">
+                        <i class="fa-solid fa-basket-shopping text-4xl text-stone-300"></i>
+                        <p class="text-sm font-medium text-stone-500 max-w-xs mx-auto">${TRANSLATIONS[currentLang].drawerEmpty}</p>
+                    </div>
+                `;
+                totalEl.textContent = `0 ${STORE_CONFIG.currency}`;
+                return;
+            }
+
+            let totalPrice = 0;
+            listEl.innerHTML = cart.map(entry => {
+                const item = MENU_ITEMS.find(m => m.id === entry.id);
+                const lineTotal = item.price * entry.qty;
+                totalPrice += lineTotal;
+                const name = item.name[currentLang] || item.name.en;
+
+                return `
+                    <div class="flex items-center gap-3.5 bg-stone-50 p-3 rounded-2xl border border-stone-100">
+                        <img src="${item.image}" alt="${name}" class="w-16 h-16 rounded-xl object-cover flex-shrink-0">
+                        <div class="flex-grow min-w-0">
+                            <h4 class="font-bold text-sm text-stone-900 truncate">${name}</h4>
+                            <p class="text-xs font-semibold text-orange-600 mt-0.5">${Number(item.price).toLocaleString('en-US')} ${STORE_CONFIG.currency}</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <button onclick="updateCartQty('${item.id}', -1)" class="w-6 h-6 rounded-lg bg-white border border-stone-200 text-xs font-bold hover:bg-stone-100">-</button>
+                                <span class="text-xs font-extrabold w-5 text-center">${entry.qty}</span>
+                                <button onclick="updateCartQty('${item.id}', 1)" class="w-6 h-6 rounded-lg bg-white border border-stone-200 text-xs font-bold hover:bg-stone-100">+</button>
+                            </div>
+                        </div>
+                        <div class="text-right font-extrabold text-sm text-stone-900">
+                            ${lineTotal.toLocaleString('en-US')} <span class="text-[10px] text-stone-500">${STORE_CONFIG.currency}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            totalEl.textContent = `${totalPrice.toLocaleString('en-US')} ${STORE_CONFIG.currency}`;
+        }
+
+        function checkoutViaTelegram() {
+            if (cart.length === 0) {
+                openTelegramQuickOrder();
+                return;
+            }
+
+            let total = 0;
+            const lines = cart.map(entry => {
+                const item = MENU_ITEMS.find(m => m.id === entry.id);
+                const sub = item.price * entry.qty;
+                total += sub;
+                const itemName = item.name[currentLang] || item.name.en;
+                return `• ${entry.qty}x ${itemName} (${sub.toLocaleString('en-US')} ${STORE_CONFIG.currency})`;
+            });
+
+            const templates = {
+                en: `Hello Efrata Juice & Burger! I would like to place an order:\n\n${lines.join('\n')}\n\nTotal: ${total.toLocaleString('en-US')} ${STORE_CONFIG.currency}`,
+                am: `ሰላም ኤፍራታ ጁስ እና በርገር! ይህንን ትዕዛዝ ማዘዝ እፈልጋለሁ:\n\n${lines.join('\n')}\n\nጠቅላላ ዋጋ: ${total.toLocaleString('en-US')} ${STORE_CONFIG.currency}`,
+                om: `Akkam Efrata Juice & Burger! Ajaja kana ajajuun barbaada:\n\n${lines.join('\n')}\n\nWaliigala: ${total.toLocaleString('en-US')} ${STORE_CONFIG.currency}`
+            };
+
+            const message = templates[currentLang] || templates.en;
+            const url = `https://t.me/+${STORE_CONFIG.telegramPhone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        function openTelegramQuickOrder() {
+            const quickMessages = {
+                en: "Hello Efrata Juice & Burger! I would like to place an order / inquire about your menu.",
+                am: "ሰላም ኤፍራታ ጁስ እና በርገር! ትዕዛዝ ማዘዝ / ስለ ሜኑ መጠየቅ እፈልጋለሁ።",
+                om: "Akkam Efrata Juice & Burger! Ajaja ajajuu / waa'ee meenuu gaafachuun barbaada."
+            };
+            const msg = quickMessages[currentLang] || quickMessages.en;
+            const url = `https://t.me/+${STORE_CONFIG.telegramPhone}?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        /**
+         * 12. EDITABLE CONTACT LOCATION, HOURS & GOOGLE MAPS SYNC
+         */
+        function toggleEditDetails() {
+            document.getElementById('editDetailsForm').classList.toggle('hidden');
+        }
+
+        function saveStoreDetails() {
+            const newPhone = document.getElementById('inputPhone').value.trim();
+            const newAddress = document.getElementById('inputAddress').value.trim();
+            const newHours = document.getElementById('inputHours').value.trim();
+
+            if (newPhone) {
+                STORE_CONFIG.phoneDisplay = newPhone;
+                STORE_CONFIG.telegramPhone = newPhone.replace(/\D/g, '');
+            }
+            if (newAddress) STORE_CONFIG.address = newAddress;
+            if (newHours) STORE_CONFIG.hours = newHours;
+
+            localStorage.setItem('efrata_store_details', JSON.stringify(STORE_CONFIG));
+            syncStoreDetailsUI();
+            document.getElementById('editDetailsForm').classList.add('hidden');
+            showToast("Store details & map updated");
+        }
+
+        function syncStoreDetailsUI() {
+            const phoneEl = document.getElementById('businessPhoneDisplay');
+            if (phoneEl) {
+                phoneEl.textContent = STORE_CONFIG.phoneDisplay;
+                phoneEl.href = `tel:${STORE_CONFIG.phoneDisplay.replace(/\s+/g, '')}`;
+            }
+            const telegramSubLink = document.getElementById('contactTelegramSubLink');
+            if (telegramSubLink) {
+                telegramSubLink.href = `https://t.me/+${STORE_CONFIG.telegramPhone}`;
+                const span = telegramSubLink.querySelector('span');
+                if (span) span.textContent = `Telegram: ${STORE_CONFIG.phoneDisplay}`;
+            }
+            const telegramBtnLink = document.getElementById('contactTelegramLink');
+            if (telegramBtnLink) {
+                const quickMessages = {
+                    en: "Hello Efrata Juice & Burger! I would like to place an order / inquire about your menu.",
+                    am: "ሰላም ኤፍራታ ጁስ እና በርገር! ትዕዛዝ ማዘዝ / ስለ ሜኑ መጠየቅ እፈልጋለሁ።",
+                    om: "Akkam Efrata Juice & Burger! Ajaja ajajuu / waa'ee meenuu gaafachuun barbaada."
+                };
+                const msg = quickMessages[currentLang] || quickMessages.en;
+                telegramBtnLink.href = `https://t.me/+${STORE_CONFIG.telegramPhone}?text=${encodeURIComponent(msg)}`;
+            }
+            const footerPhone = document.getElementById('footerPhoneText');
+            if (footerPhone) footerPhone.textContent = STORE_CONFIG.phoneDisplay;
+
+            const addrEl = document.getElementById('displayAddress');
+            if (addrEl) addrEl.textContent = STORE_CONFIG.address;
+
+            const footerAddr = document.getElementById('footerAddressText');
+            if (footerAddr) footerAddr.textContent = STORE_CONFIG.address;
+
+            const hoursEl = document.getElementById('displayHours');
+            if (hoursEl) hoursEl.textContent = STORE_CONFIG.hours;
+
+            const footerHours = document.getElementById('footerHoursText');
+            if (footerHours) footerHours.textContent = STORE_CONFIG.hours;
+
+            const inputPhone = document.getElementById('inputPhone');
+            if (inputPhone) inputPhone.value = STORE_CONFIG.phoneDisplay;
+            const inputAddress = document.getElementById('inputAddress');
+            if (inputAddress) inputAddress.value = STORE_CONFIG.address;
+            const inputHours = document.getElementById('inputHours');
+            if (inputHours) inputHours.value = STORE_CONFIG.hours;
+
+            // Update Google Maps embed dynamically
+            const mapFrame = document.getElementById('googleMapFrame');
+            if (mapFrame && STORE_CONFIG.address) {
+                mapFrame.src = `https://maps.google.com/maps?q=${encodeURIComponent(STORE_CONFIG.address)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+            }
+        }
+
+        /**
+         * 13. TOAST FEEDBACK HELPER
+         */
+        let toastTimeout;
+        function showToast(text) {
+            const toast = document.getElementById('toastNotification');
+            document.getElementById('toastMessage').textContent = text;
+            toast.classList.remove('opacity-0');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('opacity-0');
+            }, 2400);
+        }
+    </script>
+</body>
+</html>
